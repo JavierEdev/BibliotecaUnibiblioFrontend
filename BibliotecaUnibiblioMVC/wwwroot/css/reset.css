@@ -1,0 +1,32 @@
+﻿/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Puedes ajustar la fuente base según tus preferencias */
+    font-size: 16px; /* Puedes ajustar el tamaño de fuente base según tus preferencias */
+    line-height: 1.5; /* Puedes ajustar la altura de línea base según tus preferencias */
+}
+
+button {
+    /* Anula cualquier estilo predeterminado */
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+}
