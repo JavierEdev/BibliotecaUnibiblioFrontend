@@ -1,0 +1,113 @@
+﻿#ContenedorBotones {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--besh100);
+    width: 25vh;
+    height: 25vh;
+    color: var(--white);
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#mainContenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background: linear-gradient(to bottom, var(--azul200), var(--white));
+    align-items: center;
+}
+
+#btnNuevoUsuario {
+    height: 6vh;
+    margin-top: 2rem;
+    background-color: var(--besh100);
+    color: white;
+    transition: transform 0.2s ease-in;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+    #btnNuevoUsuario:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in;
+        background-color: var(--besh200);
+        transition: transform 0.2s ease-in, background-color 0.2s ease-in;
+    }
+
+.btnSeleccionar {
+    height: 5vh;
+    width: 80%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--besh200);
+    border-radius: 1rem;
+    transition: transform 0.2s ease-in, background-color 0.2s ease-in;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+    .btnSeleccionar:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in;
+        background-color: var(--besh300);
+    }
+
+
+#imagenInicio {
+    position: absolute;
+    width: 20%;
+    height: auto;
+    top: 0;
+}
+
+#H1Style {
+    align-items: center;
+    top: 19rem;
+    color: rebeccapurple;
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+/*  PEQUENO  Para 390x844 */
+@media only screen and (min-width: 390px) and (max-width: 767px) {
+    #imagenInicio {
+        width: 10rem;
+        height: auto;
+        top: 4rem;
+    }
+
+    #H1Style {
+        align-items: center;
+        top: 19rem;
+        color: rebeccapurple;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: justify;
+    }
+}
+
+/* MEDIANO Para 768 hasta 1991 */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    #imagenInicio {
+        width: 15rem;
+        height: auto;
+        top: 2rem;
+    }
+}
+
+/* GRANDE Para 992 en adelante */
+@media only screen and (min-width: 992px) {
+    #imagenInicio {
+        width: 15rem;
+        height: auto;
+        top: 1rem;
+    }
+}
