@@ -8,5 +8,19 @@ namespace BibliotecaUnibiblioMVC.Controllers
         {
             return View();
         }
+
+        public IActionResult IngresoAdministrador()
+        {
+            return View();
+        }
+
+        public IActionResult IngresoLector() 
+        {
+            return View();
+        }
+
+        public IActionResult CreacionNuevoUsuario() {
+            return View();
+        }
     }
 }
