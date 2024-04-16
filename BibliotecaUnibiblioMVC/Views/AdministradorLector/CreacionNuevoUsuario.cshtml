@@ -1,4 +1,4 @@
-﻿
+﻿@model usuarioModel
 @{
     Layout = null;
 }
@@ -9,9 +9,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="./css/creacionUsuaio.css" rel="stylesheet">
-    <link href="./css/root.css" rel="stylesheet" />
-    <link href="./css/reset.css" rel="stylesheet" />
+    <link href="~/css/creacionUsuaio.css" rel="stylesheet">
+    <link href="~/css/root.css" rel="stylesheet" />
+    <link href="~/css/reset.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <title>Document</title>
 </head>
@@ -20,58 +20,93 @@
     <main id="mainStyles">
         <img id="imagenInicio" src="./assets/img/UnibibloLogo.svg" alt="Unibiblo Logo">
         <div id="contenedorIngreso">
-            <div class="contendorIndividual">
-                <p>Primer Nombre</p>
-                <input type="text" name="primerNombre" style="display: inline-block;">
-            </div>
+            <form id="formUsuario" asp-action="GuardarUsuario" asp-controller="AdministradorLector" method="post">
+                <div class="contendorIndividual">
+                    <p>Primer Nombre*</p>
+                    <input  asp-for="primerNombre" type="text" name="primerNombre" style="display: inline-block;">
+                    <span asp-validation-for="primerNombre" class="text-danger"></span>
+                </div>
 
-            <div class="contendorIndividual">
-                <p>Segundo Nombre</p>
-                <input type="text" name="segundoNombre" style="display: inline-block;">
-            </div>
+                <div class="contendorIndividual">
+                    <p>Segundo Nombre</p>
+                    <input asp-for="segundoNombre" type="text" name="segundoNombre" style="display: inline-block;">
+                </div>
 
-            <div class="contendorIndividual">
-                <p>Primer Apellido</p>
-                <input type="text" name="primerApellido" style="display: inline-block;">
-            </div>
-                        
-            <div class="contendorIndividual">
-                <p>Segundo Apellido</p>
-                <input type="text" name="segundoApellido" style="display: inline-block;">
-            </div>
+                <div class="contendorIndividual">
+                    <p>Primer Apellido*</p>
+                    <input asp-for="primerApellido" type="text" name="primerApellido" style="display: inline-block;">
+                    <span asp-validation-for="primerApellido" class="text-danger"></span>
+                </div>
+                            
+                <div class="contendorIndividual">
+                    <p>Segundo Apellido</p>
+                    <input asp-for="segundoApellido" type="text" name="segundoApellido" style="display: inline-block;">
+                </div>
 
-            <div class="contendorIndividual">
-                <p>DPI</p>
-                <input type="text" name="dpi" style="display: inline-block;">
-            </div>
+                <div class="contendorIndividual">
+                    <p>DPI*</p>
+                    <input asp-for="dpi" type="text" name="dpi" style="display: inline-block;">
+                    <span asp-validation-for="dpi" class="text-danger"></span>
+                </div>
 
-            <div class="contendorIndividual">
-                <p>Telefono</p>
-                <input type="text" name="telefono" style="display: inline-block;">
-            </div>
+                <div class="contendorIndividual">
+                    <p>Telefono</p>
+                    <input asp-for="telefono" type="text" name="telefono" style="display: inline-block;">
+                </div>
 
-            <div class="contendorIndividual">
-                <p>Correo Electronico</p>
-                <input type="email" name="correoElectronico" style="display: inline-block;">
-            </div>
+                <div class="contendorIndividual">
+                    <p>Correo Electronico</p>
+                    <input asp-for="correo" type="email" name="correoElectronico" style="display: inline-block;">
+                </div>
 
-            <div class="contendorIndividual">
-                <p>Direccion</p>
-                <input type="text" name="Direccion" style="display: inline-block;">
-            </div>
+                <div class="contendorIndividual">
+                    <p>Direccion</p>
+                    <input asp-for="direccion" type="text" name="Direccion" style="display: inline-block;">
+                </div>
 
-            <div class="contendorIndividual">
-                <p>Contrasena</p>
-                <input type="password" name="Contrasena" style="display: inline-block;">
-            </div>
+                <div class="contenedorIndividual" style="display: flex; justify-content:space-between;">
+                    <p style ="text-align: left;">Rol*</p>
+                    <select asp-for="rol" id="comboRol" style="text-align:right;">
+                        <option value="2">Lector Estudiante</option>
+                        <option value="3">Lector Terciario</option>
+                        <option value="4">Catedrático</option>
+                        <option value="5">Colaborador</option>
+                    </select>
+                </div>
 
-            <div class="contendorIndividual">
-                <p>Confirmar contrasena </p>
-                <input type="password" name="confirmarContrasena" style="display: inline-block;">
-            </div>
+                <div class="contendorIndividual">
+                    <p>Contrasena*</p>
+                    <input asp-for="contrasena" type="password" name="Contrasena" id="contraNormal" style="display: inline-block;">
+                    <span asp-validation-for="contrasena" class="text-danger"></span>
+                </div>
 
+                <div class="contendorIndividual">
+                    <p>Confirmar contrasena*</p>
+                    <input asp-for="confirmarContrasena" type="password" name="confirmarContrasena" id="confirmarContra" style="display: inline-block;">
+                    <span asp-validation-for="confirmarContrasena" class="text-danger"></span>
+                </div>
+                <button type="submit" id="btnCrearUsuario" onclick="validarContra(event)">Crear Usuario</button>
+            </form>
         </div>
-        <button id="btnCrearUsuario">Crear Usuario</button>
+        <script>
+
+            function validarContra(event) {
+                let contra = document.getElementById("contraNormal").value;
+                let contraConfirmada = document.getElementById("confirmarContra").value;
+
+                if (contra !== contraConfirmada) {
+                    event.preventDefault(); // Evita que el formulario se envíe
+                    window.alert('Has ingresado una contraseña diferente a la confirmada, por favor vuelve a rellenar esos campos');
+                    document.getElementById("contraNormal").value = "";
+                    document.getElementById("confirmarContra").value = "";
+                } else {
+                    window.alert('Usuario creado correctamente');
+                }
+            }
+
+
+
+        </script>
     </main>
 </body>
 </html>

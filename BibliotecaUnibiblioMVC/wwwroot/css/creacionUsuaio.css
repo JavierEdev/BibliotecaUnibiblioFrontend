@@ -37,6 +37,12 @@ input {
     border-radius: 1rem;
 }
 
+select {
+    width: 28vh;
+    background-color: var(--white);
+    border-radius: 1rem;
+}
+
 #btnCrearUsuario {
     height: 3rem;
     width: 10rem;
