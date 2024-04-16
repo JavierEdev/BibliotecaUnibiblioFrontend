@@ -1,0 +1,205 @@
+﻿#mainStyles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background: linear-gradient(to bottom, var(--azul200), var(--white));
+    align-items: center;
+}
+
+#imagenInicio {
+    position: absolute;
+    width: 20%;
+    height: auto;
+    top: 0;
+}
+
+#contenedorIngreso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--besh100);
+    border-radius: 1rem;
+}
+
+.contenedorIndividual {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#H1Style {
+    font-size: 2rem;
+}
+
+h2 {
+    text-align: center;
+}
+
+/*  PEQUENO  Para 390x844 */
+@media only screen and (min-width: 1000px) and (max-width: 1279px) {
+    #imagenInicio {
+        width: 4rem;
+        height: auto;
+        top: 1rem;
+    }
+}
+
+/* MEDIANO Para 1280 */
+@media only screen and (min-width: 1280px) and (max-width: 1439px) {
+    #imagenInicio {
+        width: 10rem;
+        height: auto;
+        top: 1rem;
+    }
+}
+
+/* GRANDE Para 992 en adelante */
+@media only screen and (min-width: 1440px) {
+    #imagenInicio {
+        width: 12rem;
+        height: auto;
+        top: 1rem;
+    }
+}
+
+
+/* diseno LOGIN'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
+section span {
+    position: relative;
+    display: block;
+    width: calc(6.25vw - 2px);
+    height: calc(6.25vw - 2px);
+    background: #181818;
+    z-index: 2;
+    transition: 1.5s;
+}
+
+    section span:hover {
+        background: var(--besh100);
+        transition: 0s;
+    }
+
+section .signin {
+    width: 400px;
+    background: #222;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0,0,0,9);
+}
+
+    section .signin .content {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 40px
+    }
+
+        /* Color fonts'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
+        section .signin .content h2 {
+            font-size: 2em;
+            color: var(--besh100);
+            text-transform: uppercase;
+        }
+
+        section .signin .content .form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+            section .signin .content .form .inputBox {
+                position: relative;
+                width: 100%;
+            }
+
+                /* Color fondo'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
+                section .signin .content .form .inputBox input {
+                    position: relative;
+                    width: 100%;
+                    background: #333;
+                    border: none;
+                    outline: none;
+                    padding: 25px 10px 7.5px;
+                    border-radius: 4px;
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 1em;
+                }
+
+                /* Color usuaario Contrasena antes de hacer click'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
+                section .signin .content .form .inputBox i {
+                    position: absolute;
+                    left: 0;
+                    padding: 15px 10px;
+                    font-style: normal;
+                    color: var(--besh100);
+                    transition: 0.5s;
+                    pointer-events: none;
+                }
+
+/* Color Usuario contrasena despues de hacer click'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
+.signin .content .form .inputBox input:focus ~ i,
+.signin .content .form .inputBox input:valid ~ i {
+    transform: translateY(-7.5px);
+    font-size: 0.8em;
+    color: var(--azul200);
+}
+
+.signin .content .form .links {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .signin .content .form .links a {
+        color: #fff;
+        text-decoration: none;
+    }
+        /* Color fonts'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
+        .signin .content .form .links a:nth-child(2) {
+            color: #0f0;
+            font-weight: 600;
+        }
+/* Color boton Ingreso'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
+.signin .content .form .inputBox input[type="submit"] {
+    padding: 10px;
+    background: var(--besh100);
+    color: #000;
+    font-weight: 600;
+    font-size: 1.35em;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: transform 0.2s ease-in, background-color 0.2s ease-in;
+}
+
+    .signin .content .form .inputBox input[type="submit"]:hover {
+        transform: scale(1.1);
+        background-color: var(--besh300);
+        transition: transform 0.2s ease-in, background-color 0.2s ease-in;
+    }
+
+@media (max-width: 900px) {
+    section span {
+        width: calc(10vw - 2px);
+        height: calc(10vw - 2px);
+    }
+}
+
+@media (max-width: 600px) {
+    section span {
+        width: calc(20vw - 2px);
+        height: calc(20vw - 2px);
+    }
+}
