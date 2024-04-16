@@ -29,7 +29,7 @@ namespace BibliotecaUnibiblioMVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=AdministradorLector}/{action=Index}/{id?}");
+                pattern: "{controller=AdministradorLector}/{action=IngresoLector}/{id?}");
 
             app.Run();
         }
