@@ -9,39 +9,67 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BibliotecaUnibiblioMVC
 build_property.RootNamespace = BibliotecaUnibiblioMVC
-build_property.ProjectDir = C:\BibliotecaUnibiblioFrontend\BibliotecaUnibiblioMVC\
+build_property.ProjectDir = C:\Users\josti\OneDrive\Documentos\GitHub\BibliotecaUnibiblioFrontend\BibliotecaUnibiblioMVC\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = true
-build_property.MSBuildProjectDirectory = C:\BibliotecaUnibiblioFrontend\BibliotecaUnibiblioMVC
+build_property.MSBuildProjectDirectory = C:\Users\josti\OneDrive\Documentos\GitHub\BibliotecaUnibiblioFrontend\BibliotecaUnibiblioMVC
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Home/Index.cshtml]
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/AdministradorLector/CreacionNuevoUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvckxlY3RvclxDcmVhY2lvbk51ZXZvVXN1YXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/AdministradorLector/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvckxlY3RvclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/AdministradorLector/IngresoAdministrador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvckxlY3RvclxJbmdyZXNvQWRtaW5pc3RyYWRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/AdministradorLector/IngresoLector.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvckxlY3RvclxJbmdyZXNvTGVjdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/AdministradorLector/PrestamosAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5pc3RyYWRvckxlY3RvclxQcmVzdGFtb3NBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Catalogo/Catalogo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0YWxvZ29cQ2F0YWxvZ28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Catalogo/CatalogoLector.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0YWxvZ29cQ2F0YWxvZ29MZWN0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Home/Privacy.cshtml]
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Shared/Error.cshtml]
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/_ViewImports.cshtml]
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/_ViewStart.cshtml]
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Shared/_Layout.cshtml]
+[C:/Users/josti/OneDrive/Documentos/GitHub/BibliotecaUnibiblioFrontend/BibliotecaUnibiblioMVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-5uqww7cz8o
