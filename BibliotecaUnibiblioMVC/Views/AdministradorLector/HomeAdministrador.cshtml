@@ -1,0 +1,86 @@
+﻿@model usuarioModel
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous" />
+    <link href="~/css/root.css" rel="stylesheet" />
+    <link href="~/css/reset.css" rel="stylesheet" />
+    <link href="~/css/HomeAdministrador.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <header>
+        <!-- place navbar here -->
+    </header>
+    <main>
+        <div class="contenedorTitulo">
+            <img src="./assets/img/UnibibloLogo.svg" class="logoStyles">
+            <h1>Biblioteca Unibiblo</h1>
+            <h2>Administradores</h2>
+        </div>
+
+        <div id="mainContenedor" style="width: auto" class="container-xl card my-3">
+            <div class="row align-items-center justify-content-around my-3">
+                <!-- BOTON MENU -->
+
+                <a class="card align-items-center btnHome" style="width: 18rem;">
+                    <img src="~/assets/img/catalogo.svg" class="card-img-top imagenbtn" alt="..." style="width: 50%; height: auto;">
+                    <div class="card-body contenedorBoton">
+                        <h5 class="card-title">Catalogo</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </a>
+                <!-- BOTON MENU -->
+                <a class="card align-items-center btnHome" style="width: 18rem;">
+                    <img src="~/assets/img/usuarios.svg" class="card-img-top imagenbtn" alt="..." style="width: 50%; height: auto;">
+                    <div class="card-body">
+                        <h5 class="card-title">Usuarios</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </a>
+
+
+            </div>
+            <div class="row align-items-center justify-content-around my-3">
+                <!-- BOTON MENU -->
+                <a class="card align-items-center btnHome" style="width: 18rem;">
+                    <img src="~/assets/img/inventario.svg" class="card-img-top imagenbtn" alt="..." style="width: 50%; height: auto;">
+                    <div class="card-body">
+                        <h5 class="card-title">Gestion de inventario</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </a>
+                <!-- BOTON MENU -->
+                <a class="card align-items-center btnHome" style="width: 18rem;">
+                    <img src="~/assets/img/reporteria.svg" class="card-img-top imagenbtn" alt="..." style="width: 50%; height: auto;">
+                    <div class="card-body">
+                        <h5 class="card-title">Reporteria</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </main>
+    <footer class="bg-dark p-2 ">
+        <div>
+            Todos los derechos reservados &copy;
+        </div>
+    </footer>
+</body>
+</html>
