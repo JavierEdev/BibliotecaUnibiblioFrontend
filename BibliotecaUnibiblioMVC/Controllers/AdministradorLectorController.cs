@@ -47,6 +47,13 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View();
         }
 
+        public IActionResult Catalogo()
+        {
+            CatalogoDatos _CatalogoDatos = new CatalogoDatos();
+            var olista = _CatalogoDatos.ListarCatalogo();
+
+            return View(olista);
+        }
 
     }
 }
