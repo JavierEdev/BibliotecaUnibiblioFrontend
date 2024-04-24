@@ -1,5 +1,5 @@
 ﻿using BibliotecaUnibiblioMVC.Models;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using System.Data;
 
 namespace BibliotecaUnibiblioMVC.Datos
@@ -12,7 +12,7 @@ namespace BibliotecaUnibiblioMVC.Datos
 
             //leer Tabla Libros(Select)
 
-            var oLista = new List<CatalogoModel>();
+            var oLista = new List<CatalogoModel>();     
 
             var cn = new Conexion();
 
@@ -28,15 +28,15 @@ namespace BibliotecaUnibiblioMVC.Datos
                     {
                         oLista.Add(new CatalogoModel()
                         {
-                            idLibro = Convert.ToInt32(dr["ID_Departamento"]),
+                            idLibro = Convert.ToInt32(dr["idLibro"]),
                             Nombre = dr["Nombre"].ToString(),
                             Autor = dr["Autor"].ToString(),
-                            anioPublicacion = dr["Año Publicacion"].ToString(),
-                            grupoLibro = dr["Grupo Libro"].ToString(),
-                            enStock = dr["En Stock"].ToString(),
-                            estado = dr["Estado"].ToString(),
-                            tipoIdentificador = dr["Tipo de identificador"].ToString(),
-                            idArea = dr["ID Area"].ToString()
+                            anioPublicacion = (DateTime?)dr["anioPublicacion"],
+                            grupoLibro = Convert.ToInt32(dr["grupoLibro"]),
+                            enStock = Convert.ToInt32(dr["enStock"]),
+                            estado = Convert.ToInt32(dr["estado"]),
+                            tipoIdentificador = Convert.ToInt32(dr["tipoIdentificador"]),
+                            idArea = Convert.ToInt32(dr["idArea"])
                         });
                     }
                 }

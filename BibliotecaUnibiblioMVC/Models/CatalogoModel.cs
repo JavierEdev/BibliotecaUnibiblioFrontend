@@ -7,12 +7,12 @@ namespace BibliotecaUnibiblioMVC.Models
         public int idLibro { get; set; }
         public string Nombre { get; set; }
         public string Autor { get; set; }
-        public string anioPublicacion { get; set; }
-        public string grupoLibro { get; set; }
-        public string enStock { get; set; }
-        public string estado { get; set; }
-        public string tipoIdentificador { get; set; }
-        public string idArea { get; set; }
+        public DateTime? anioPublicacion { get; set; }
+        public int grupoLibro { get; set; }
+        public int enStock { get; set; }
+        public int estado { get; set; }
+        public int  tipoIdentificador { get; set; }
+        public int idArea { get; set; }
 
     }
 }
