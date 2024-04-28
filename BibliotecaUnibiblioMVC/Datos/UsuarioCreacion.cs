@@ -1,8 +1,6 @@
 ﻿using BibliotecaUnibiblioMVC.Models;
-using BibliotecaUnibiblioMVC.Datos;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace BibliotecaUnibiblioMVC.Datos
 {

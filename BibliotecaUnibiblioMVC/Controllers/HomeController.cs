@@ -23,6 +23,16 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View();
         }
 
+        public IActionResult IngresoAdministrador()
+        {
+            return View("~/Views/AdministradorLector/IngresoAdministrador.cshtml");
+        }
+
+        public IActionResult IngresoLector()
+        {
+            return View("~/Views/AdministradorLector/IngresoLector.cshtml");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

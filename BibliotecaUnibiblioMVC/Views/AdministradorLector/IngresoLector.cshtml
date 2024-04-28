@@ -17,9 +17,9 @@
 <body>
     <main id="mainStyles">
 
-        <img id="imagenInicio" src="./assets/img/UnibibloLogo.svg" alt="Unibiblo Logo">
+        <img id="imagenInicio" src="~/assets/img/UnibibloLogo.svg" alt="Unibiblo Logo">
         <h1 id="H1Style">Bibliteca Unibiblo</h1>
-
+        <form asp-action="HomeAdministrador" asp-controller="AdministradorLector">
         <div id="contenedorIngreso">
 
             <section>
@@ -61,6 +61,7 @@
         </div>
 
         <button id="Ingresar"></button>
+        </form>
     </main>
 
 </body>

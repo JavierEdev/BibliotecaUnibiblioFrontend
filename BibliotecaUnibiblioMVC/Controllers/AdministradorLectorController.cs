@@ -22,14 +22,25 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View();
         }
 
+        public IActionResult CreacionNuevoUsuario()
+        {
+            return View();
+        }
+
+        public IActionResult HomeAdministrador() 
+        {
+            return View();
+        }
+
+        public IActionResult PrestamosAdministrador()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult GuardarUsuario(usuarioModel oUsuario)
         {
             UsuarioCreacion _usuariosDatos = new UsuarioCreacion();
-            if (!ModelState.IsValid)
-            {
-                return RedirectToAction("CreacionNuevoUsuario");
-            }
 
             var repuesta = _usuariosDatos.Guardar(oUsuario);
 
@@ -41,18 +52,6 @@ namespace BibliotecaUnibiblioMVC.Controllers
             {
                 return View("CreacionNuevoUsuario");
             }
-        }
-
-        public IActionResult CreacionNuevoUsuario() {
-            return View();
-        }
-
-        public IActionResult Catalogo()
-        {
-            CatalogoDatos _CatalogoDatos = new CatalogoDatos();
-            var olista = _CatalogoDatos.ListarCatalogo();
-
-            return View(olista);
         }
 
     }

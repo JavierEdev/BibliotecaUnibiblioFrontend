@@ -19,11 +19,11 @@
         <img id="imagenInicio" src="~/assets/img/UnibibloLogo.svg" alt="Unibiblo Logo">
         <h1 id="H1Style">Bibliteca Unibiblo</h1>
         <div id="ContenedorBotones">
-            <button id="btnAdministrador" class="btnSeleccionar">Administrador</button>
-            <button id="btnLector" class="btnSeleccionar">Lector</button>
+            <button onclick="window.location.href = '/AdministradorLector/IngresoAdministrador';" id="btnAdministrador" class="btnSeleccionar">Administrador</button>
+            <button onclick="window.location.href = '/AdministradorLector/IngresoLector';" id="btnLector" class="btnSeleccionar">Lector</button>
         </div>
 
-        <button id="btnNuevoUsuario" class="btnCrearNuevo">Crear Nuevo</button>
+        <a asp-controller="AdministradorLector" asp-action="CreacionNuevoUsuario" id="btnNuevoUsuario" class="btnCrearNuevo">Crear Nuevo</a>
     </main>
 </body>
 </html>
