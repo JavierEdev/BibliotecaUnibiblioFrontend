@@ -8,15 +8,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-          crossorigin="anonymous" />
+    <!-- INCLUIR ESTE LINK Y LOS SCRIPTS DE BOOTSTRAP -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- hojas de estilos siempre tienen que estar (reset, root y navbaar footer) y una extraque es la de la pagina como tal-->
     <link href="~/css/reset.css" rel="stylesheet" />
     <link href="~/css/root.css" rel="stylesheet" />
-    <link href="~/css/PrestamosAdministrador.css" rel="stylesheet"/>
     <link href="~/css/navbarFooter.css" rel="stylesheet" />
+    <link href="~/css/PrestamosAdministrador.css" rel="stylesheet"/>
 
     <title>Document</title>
 </head>
@@ -24,29 +22,82 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container-fluid">
             <!-- IMAGEN EN LA QUE SE HACE CLICK PARA REGRESAR A HOME -->
-            <a asp-controller="AdministradorLector" asp-action="HomeAdministrador" class="navbar-brand"><img class="logoStyles logoHover" src="~/assets/img/UnibibloLogo.svg" alt=""></a>
+            <a class="navbar-brand" href="#"><img class="logoStyles logoHover" src="./assets/img/UnibibloLogo.svg" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- LISTA DE BOTONES ( CATALOGO, USUARIOS, GESTION DE INVENTARIO, REPORTERIA )-->
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto ">
-                        <li class="nav-item ">
-                            <a class="nav-link navbarHoverStyles" aria-current="page" href="#">Catalogo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link navbarHoverStyles"  href="#">Usuarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link navbarHoverStyles"  href="#">Gestion de inventario</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link navbarHoverStyles"  href="#">Reporteria</a>
-                        </li>
+                    <li class="nav-item"></li>
+                    <a class="nav-link navbarHoverStyles" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Catalogo
+                    </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Usuarios
+                        </a>
+                        <!-- DROPDOWN DE USUARIOS (CON SUS RESPECTIVAS ACCIONES) -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Ver Usuarios Lectores</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar Usuarios Lectores</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Nuevo Colaborador</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Ver Colaboradores</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar Colaboradores</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Suspender usuario</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Gestion de inventario
+                        </a>
+                        <!-- DROPDOWN DE GESTION DE INVENTARIO (CON SUS RESPECTIVAS ACCIONES) -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Agregar nuevos ejemplares</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar ejemplares</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar estado ejemplares</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar cantidad disponible</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Agregar area tematica</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar area tematica</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Ver libros</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Ver grupos Libros</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Ver Area Tematica</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reporteria
+                        </a>
+                        <!-- AQUI ESTA EL DROPDOWN DE REPORTERIA (CON SUS RESPECTIVAS ACCIONES) -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Deudores</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Devolucion de ejemplar</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Reporte general</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+
     <main id="mainContenedor">
         <div class="my-5">
             <h1 class="py-3">Prestamos</h1>
@@ -85,5 +136,8 @@
             Todos los derechos reservados &copy;
         </div>
     </footer>
+    <!-- SCRIPTS BOOTSTRAP -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html> 

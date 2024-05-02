@@ -1,0 +1,17 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#mainContenedor {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+h1 {
+    font-weight: bold;
+    text-align: center;
+}
