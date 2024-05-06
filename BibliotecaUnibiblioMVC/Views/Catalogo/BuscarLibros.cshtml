@@ -1,6 +1,6 @@
 ﻿@model List<CatalogoModel>
 @{
-    Layout = null;
+    ViewData["Title"] = "BuscarLibros";
 }
 
 <!DOCTYPE html>
@@ -87,15 +87,15 @@
     </nav>
     <!-- BARRA DE BUSQUEDA DE CATALOGO -->
     <div class="container my-2">
-        <form class="d-flex" action="@Url.Action("BuscarLibros", "Libros")" method="GET">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
     </div>
 
     <main class="album py-5 ">
         <div id="contenedorCatalogo">
-             <!-- FOR EACH PARA DESPLEGAR LOS LIBROS -->
+            <!-- FOR EACH PARA DESPLEGAR LOS LIBROS -->
             @foreach (var item in Model)
             {
                 <div class="card shadow-sm contenedorIndividual">
@@ -154,5 +154,7 @@
 </body>
 
 </html>
+
+
 
 
