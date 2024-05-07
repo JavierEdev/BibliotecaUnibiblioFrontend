@@ -4,7 +4,6 @@ namespace BibliotecaUnibiblioMVC.Models
 {
     public class usuarioModel
     {
-        public string id { get; set; }
         [Required(ErrorMessage = "El campo de Primer Nombre es obligatorio")]
         public string primerNombre { get; set; }
         public string segundoNombre { get; set; }
@@ -14,6 +13,7 @@ namespace BibliotecaUnibiblioMVC.Models
         [Required(ErrorMessage = "El campo DPI es obligatorio")]
         public string dpi { get; set; }
         public string telefono { get; set; }
+        [Required(ErrorMessage = "El campo correo es obligatorio")]
         public string correo { get; set; }
         public string direccion {  get; set; }
         [Required(ErrorMessage = "El campo contraseña es obligatorio")]

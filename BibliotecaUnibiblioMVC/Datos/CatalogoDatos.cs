@@ -80,5 +80,37 @@ namespace BibliotecaUnibiblioMVC.Datos
             return oLista;
         }
 
+        public List<MostrarUsuarios> ListarUsuarios()
+        {
+
+            //leer Tabla Libros(Select)
+
+            var oLista = new List<MostrarUsuarios>();
+
+            var cn = new Conexion();
+
+            using (var Conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                Conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_verUsuarios", Conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oLista.Add(new MostrarUsuarios()
+                        {
+                            NombreCompleto = dr["Nombre"].ToString(),
+                            DPI = dr["DPI"].ToString(),
+                            Correo = dr["correo"].ToString(),
+                            Direccion = dr["direccion"].ToString()
+                        });
+                    }
+                }
+            }
+            return oLista;
+        }
+
     }
 }

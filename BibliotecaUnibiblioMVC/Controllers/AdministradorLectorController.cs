@@ -7,6 +7,9 @@ namespace BibliotecaUnibiblioMVC.Controllers
     public class AdministradorLectorController : Controller
     {
 
+        CatalogoDatos _CatalogoDatos = new CatalogoDatos();
+        private readonly CatalogoDatos _catalogoDatos;
+
         public IActionResult Index()
         {
             return View();
@@ -27,9 +30,57 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View();
         }
 
-        public IActionResult HomeAdministrador() 
+        public IActionResult HomeAdministrador()
+        {
+                return View();
+        }
+
+        public IActionResult InventarioVerLibrosAdministrador()
         {
             return View();
+        }
+
+        public IActionResult ReporteriaReporteGeneralAdministrador()
+        {
+            return View();
+        }
+
+        public IActionResult UsuariosVerColaboradoresAdministrador()
+        {
+            return View();
+        }
+
+        public IActionResult InventarioVerGrupoLibrosAdministrador()
+        {
+            return View();
+        }
+
+        public IActionResult InventarioVerAreaTematicaAdministrador()
+        {
+            return View();
+        }
+
+        public IActionResult VerUsuariosLectoresAdministrador()
+        {
+            var olista = _CatalogoDatos.ListarUsuarios();
+
+            return View(olista);
+        }
+
+        public IActionResult HomeAdministradorValidacion(LoginModel oLogin) 
+        {
+            Seguridad validacionPassword = new Seguridad();
+            var respuesta = validacionPassword.validarUsuario(oLogin);
+
+            if (respuesta == true)
+            {
+                return RedirectToAction("HomeAdministrador");
+            }
+            else 
+            {
+                TempData["Alerta"] = "Usuario o password incorrectos";
+                return RedirectToAction("IngresoAdministrador");
+            }
         }
 
         public IActionResult PrestamosAdministrador()

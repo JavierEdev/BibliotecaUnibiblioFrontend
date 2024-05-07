@@ -8,7 +8,7 @@ namespace BibliotecaUnibiblioMVC.Controllers
     {
         CatalogoDatos _CatalogoDatos = new CatalogoDatos();
         private readonly CatalogoDatos _catalogoDatos;
-        public IActionResult CatalogoLector()
+        public IActionResult Catalogo()
         {
            
             var olista = _CatalogoDatos.ListarCatalogo();
@@ -21,7 +21,6 @@ namespace BibliotecaUnibiblioMVC.Controllers
             var librosEncontrados = _catalogoDatos.BuscarLibrosPorNombre(nombreLibro);
             return View(librosEncontrados);
         }
-
 
     }
 }
