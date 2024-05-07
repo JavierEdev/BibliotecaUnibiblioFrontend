@@ -1,0 +1,145 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- INCLUIR ESTE LINK Y SCRIPTS PARA BOOTSTRAP -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- hojas de estilos siempre tienen que estar (reset, root y navbaar footer) y una extraque es la de la pagina como tal-->
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="~/css/root.css">
+    <link rel="stylesheet" href="~/css/navbarFooter.css">
+    <link rel="stylesheet" href="~/css/layoutNuevoModificar.css">
+
+    <title>Modificar Cantidad Disponible</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- IMAGEN EN LA QUE SE HACE CLICK PARA REGRESAR A HOME -->
+            <a class="navbar-brand" href="#"><img class="logoStyles logoHover" src="~/assets/img/UnibibloLogo.svg" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- LISTA DE BOTONES ( CATALOGO, USUARIOS, GESTION DE INVENTARIO, REPORTERIA )-->
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link navbarHoverStyles" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Catalogo
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Usuarios
+                        </a>
+                        <!-- DROPDOWN DE USUARIOS (CON SUS RESPECTIVAS ACCIONES) -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Ver Usuarios Lectores</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar Usuarios Lectores</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Nuevo Colaborador</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Ver Colaboradores</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar Colaboradores</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Suspender usuario</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Gestion de inventario
+                        </a>
+                        <!-- DROPDOWN DE GESTION DE INVENTARIO (CON SUS RESPECTIVAS ACCIONES) -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Agregar nuevos ejemplares</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar ejemplares</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar estado ejemplares</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar cantidad disponible</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Agregar area tematica</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Modificar area tematica</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Ver libros</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Ver grupos Libros</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Ver Area Tematica</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reporteria
+                        </a>
+                        <!-- AQUI ESTA EL DROPDOWN DE REPORTERIA (CON SUS RESPECTIVAS ACCIONES) -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Deudores</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Devolucion de ejemplar</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Reporte general</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main id="mainContenedor ">
+        <div class="contenedorInfoStyles container-sm">
+            <h1 class="py-3">Cantidad Disponible</h1>
+            <!-- INPUTS DEL FORM Y BOTON PARA ENVIAR -->
+            <form class="card p-5 contenedorFormStyles container-md">
+                <div class="mb-3">
+                    <label for="correoUsuario" class="form-label">ID (NO MODIFICABLE)</label>
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="12345678">
+                </div>
+                <div class="mb-3">
+                    <label for="correoUsuario" class="form-label">Ejemplo</label>
+                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
+                </div>
+                <div class="mb-3">
+                    <label for="correoUsuario" class="form-label">Ejemplo</label>
+                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
+                </div>
+                <div class="mb-3">
+                    <label for="correoUsuario" class="form-label">Ejemplo</label>
+                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
+                </div>
+                <div class="mb-3">
+                    <label for="correoUsuario" class="form-label">Ejemplo</label>
+                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
+                </div>
+
+                <div class="mb-3">
+                    <label for="fechaSalida" class="form-label">Fecha ejemplo</label>
+                    <input type="date" class="form-control" id="btnFechaSalida">
+                </div>
+
+                <div class="contenedorBotones">
+                    <button type="submit" class="btn btn-primary btnContenedor">Modificar</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+    <footer class="bg-dark p-2 ">
+        <div>
+            Todos los derechos reservados &copy;
+        </div>
+    </footer>
+    <!-- SCRIPTS BOOTSTRAP -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
