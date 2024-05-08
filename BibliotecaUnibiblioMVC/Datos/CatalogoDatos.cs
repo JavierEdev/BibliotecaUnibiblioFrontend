@@ -100,11 +100,42 @@ namespace BibliotecaUnibiblioMVC.Datos
                     while (dr.Read())
                     {
                         oLista.Add(new MostrarUsuarios()
-                        {
+                        {   
+                            Id = Convert.ToInt32(dr["Id"]),
                             NombreCompleto = dr["Nombre"].ToString(),
                             DPI = dr["DPI"].ToString(),
                             Correo = dr["correo"].ToString(),
-                            Direccion = dr["direccion"].ToString()
+                            Direccion = dr["direccion"].ToString(),
+                        });
+                    }
+                }
+            }
+            return oLista;
+        }
+
+        public List<MostrarUsuarios> ListarColaboradores()
+        {
+            var oLista = new List<MostrarUsuarios>();
+
+            var cn = new Conexion();
+
+            using (var Conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                Conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_verUsuariosColaboradores", Conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oLista.Add(new MostrarUsuarios()
+                        {
+                            Id = Convert.ToInt32(dr["Id"]),
+                            NombreCompleto = dr["Nombre"].ToString(),
+                            DPI = dr["DPI"].ToString(),
+                            Correo = dr["correo"].ToString(),
+                            Direccion = dr["direccion"].ToString(),
                         });
                     }
                 }
