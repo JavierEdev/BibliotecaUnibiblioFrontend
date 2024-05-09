@@ -130,6 +130,7 @@ namespace BibliotecaUnibiblioMVC.Datos
                 {
                     Conexion.Open();
                     SqlCommand cmd = new SqlCommand("sp_ModificarLibro", Conexion);
+                    cmd.Parameters.AddWithValue("idLibro ", oLibros.idLibro);
                     cmd.Parameters.AddWithValue("Nombre", oLibros.Nombre);
                     cmd.Parameters.AddWithValue("Autor", oLibros.Autor);
                     cmd.Parameters.AddWithValue("anioPublicacion", oLibros.anioPublicacion);
@@ -226,7 +227,6 @@ namespace BibliotecaUnibiblioMVC.Datos
                 {
                     Conexion.Open();
                     SqlCommand cmd = new SqlCommand("sp_InsertarGrupoLibro", Conexion);
-                    cmd.Parameters.AddWithValue("idGrupoLibro", oGrupo.idGrupoLibro);
                     cmd.Parameters.AddWithValue("descripcion", oGrupo.descripcion);
                    
                     cmd.CommandType = CommandType.StoredProcedure;

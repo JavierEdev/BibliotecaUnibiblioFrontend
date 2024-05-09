@@ -1,5 +1,6 @@
-﻿@{
-    Layout = null;
+﻿ @model List<GrupoLibrosModel>
+@{
+    ViewData["Title"] = "InventarioVerGrupoLibrosAdminiestrador";
 }
 
 <!DOCTYPE html>
@@ -23,17 +24,21 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container-fluid">
             <!-- IMAGEN EN LA QUE SE HACE CLICK PARA REGRESAR A HOME -->
-            <a class="navbar-brand" href="#"><img class="logoStyles logoHover" src="~/assets/img/UnibibloLogo.svg" alt=""></a>
+            <a class="navbar-brand" asp-action="HomeAdministrador" asp-controller="AdministradorLector"><img class="logoStyles logoHover" src="~/assets/img/UnibibloLogo.svg" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- LISTA DE BOTONES ( CATALOGO, USUARIOS, GESTION DE INVENTARIO, REPORTERIA )-->
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto ">
-                    <li class="nav-item">
-                        <a class="nav-link navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Catalogo
                         </a>
+                        <!-- DROPDOWN DE USUARIOS (CON SUS RESPECTIVAS ACCIONES) -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" asp-action="Catalogo" asp-controller="Catalogo">Catalogo</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,13 +46,13 @@
                         </a>
                         <!-- DROPDOWN DE USUARIOS (CON SUS RESPECTIVAS ACCIONES) -->
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Ver Usuarios Lectores</a></li>
+                            <li><a class="dropdown-item" asp-action="VerUsuariosLectoresAdministrador" asp-controller="AdministradorLector">Ver Usuarios Lectores</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Modificar Usuarios Lectores</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Nuevo Colaborador</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Ver Colaboradores</a></li>
+                            <li><a class="dropdown-item" asp-action="UsuariosVerColaboradoresAdministrador" asp-controller="AdministradorLector">Ver Colaboradores</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Modificar Colaboradores</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -72,11 +77,11 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Modificar area tematica</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Ver libros</a></li>
+                            <li><a class="dropdown-item" asp-action="InventarioVerLibrosAdministrador" asp-controller="AdministradorLector">Ver libros</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Ver grupos Libros</a></li>
+                            <li><a class="dropdown-item" asp-action="InventarioVerGrupoLibrosAdministrador" asp-controller="AdministradorLector">Ver grupos Libros</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Ver Area Tematica</a></li>
+                            <li><a class="dropdown-item" asp-action="InventarioVerAreaTematicaAdministrador" asp-controller="AdministradorLector">Ver Area Tematica</a></li>
 
                         </ul>
                     </li>
@@ -113,12 +118,9 @@
 
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Id Grupo Libro</th>
+                            <th>Descipcion</th>
+                            <th>Modificar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -127,166 +129,14 @@
                         AQUI (dentro del tbody) VA EL FOR EACH PARA MOSTRAR LOS DATOS DE LA BASE DE DATOS
                         BORRAR TODOS LOS TR DE EJEMPLO
                         -->
+                        @foreach (var item in Model)
+                         {
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011-04-25</td>
-                            <td>$320,800</td>
+                            <td>@item.idGrupoLibro</td>
+                            <td>@item.descripcion</td>
+                                <td><a asp-action="ModificarGrupoAdministrador" asp-controller="AdministradorLectorController" class="btn btn-primary btn-sm" asp-route-idGrupoLibro="@item.idGrupoLibro"><i class="bi bi-pen"> Editar</i></a></td>
                         </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011-07-25</td>
-                            <td>$170,750</td>
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                            <td>2009-01-12</td>
-                            <td>$86,000</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>2012-03-29</td>
-                            <td>$433,060</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008-11-28</td>
-                            <td>$162,700</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>2012-12-02</td>
-                            <td>$372,000</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                            <td>2012-08-06</td>
-                            <td>$137,500</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                            <td>2010-10-14</td>
-                            <td>$327,900</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008-11-28</td>
-                            <td>$162,700</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>2012-12-02</td>
-                            <td>$372,000</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                            <td>2012-08-06</td>
-                            <td>$137,500</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                            <td>2010-10-14</td>
-                            <td>$327,900</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008-11-28</td>
-                            <td>$162,700</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>2012-12-02</td>
-                            <td>$372,000</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                            <td>2012-08-06</td>
-                            <td>$137,500</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                            <td>2010-10-14</td>
-                            <td>$327,900</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008-11-28</td>
-                            <td>$162,700</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>2012-12-02</td>
-                            <td>$372,000</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                            <td>2012-08-06</td>
-                            <td>$137,500</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                            <td>2010-10-14</td>
-                            <td>$327,900</td>
-                        </tr>
+                         }
 
                     </tbody>
 
@@ -295,12 +145,9 @@
                     -->
                     <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Id Grupo Libro</th>
+                            <th>Descipcion</th>
+                            <th>Modificar</th>
                         </tr>
                     </tfoot>
 
@@ -322,5 +169,7 @@
     <script defer src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
     <script defer src="https://cdn.datatables.net/2.0.5/js/dataTables.bootstrap5.js"></script>
     <script defer src="~/js/Tabla.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

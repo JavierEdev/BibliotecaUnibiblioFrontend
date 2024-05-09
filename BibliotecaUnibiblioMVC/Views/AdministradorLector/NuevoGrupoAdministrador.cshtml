@@ -1,4 +1,4 @@
-﻿@model AreaTematicaModel
+﻿@model GrupoLibrosModel
 @{
     Layout = null;
 }
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="~/css/navbarFooter.css">
     <link rel="stylesheet" href="~/css/layoutNuevoModificar.css">
 
-    <title>Modificar Area Tematica</title>
+    <title>Agregar Grupo Libro</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -98,38 +98,16 @@
     </nav>
     <main id="mainContenedor ">
         <div class="contenedorInfoStyles container-sm">
-            <h1 class="py-3">Area Tematica</h1>
+            <h1 class="py-3">Agregar Grupo libros</h1>
             <!-- INPUTS DEL FORM Y BOTON PARA ENVIAR -->
-            <form asp-action ="NuevoAreaTematicaAdministrador" asp-controller="AdministradorLector" class="card p-5 contenedorFormStyles container-md">
+            <form asp-action="NuevoGrupoAdministrador" asp-controller="AdministradorLector" class="card p-5 contenedorFormStyles container-md">
                 <div class="mb-3">
-                    <label for="correoUsuario" class="form-label">ID (NO MODIFICABLE)</label>
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="12345678">
-                </div>
-                <div class="mb-3">
-                    <label for="correoUsuario" class="form-label">Ejemplo</label>
-                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
-                </div>
-                <div class="mb-3">
-                    <label for="correoUsuario" class="form-label">Ejemplo</label>
-                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
-                </div>
-                <div class="mb-3">
-                    <label for="correoUsuario" class="form-label">Ejemplo</label>
-                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
-                </div>
-                <div class="mb-3">
-                    <label for="correoUsuario" class="form-label">Ejemplo</label>
-                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
-                </div>
-
-                <div class="mb-3">
-                    <label for="fechaSalida" class="form-label">Fecha ejemplo</label>
-                    <input type="date" class="form-control" id="btnFechaSalida">
+                    <label for="correoUsuario" class="form-label">Descipcion</label>
+                    <input asp-for="descripcion" type="text" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
                 </div>
 
                 <div class="contenedorBotones">
-                    <button type="submit" class="btn btn-primary btnContenedor">Modificar</button>
-                    <button type="submit" class="btn btn-warning btnContenedor">Eliminar</button>
+                    <button type="submit" class="btn btn-primary btnContenedor">Crear</button>
                 </div>
 
             </form>

@@ -9,7 +9,18 @@ namespace BibliotecaUnibiblioMVC.Controllers
         public IActionResult InvetarioVerLibrosAdministrador()
         {
             var olista = _GestionInventarioDatos.ListarLibros();
-            return View();
+            return View(olista);
+        }
+
+        public IActionResult InvetarioVerGrupoLibrosAdministrador()
+        {
+            var olista = _GestionInventarioDatos.ListarGrupos();
+            return View(olista);
+        }
+        public IActionResult InvetarioVerAreaTematicaAdministrador()
+        {
+            var olista = _GestionInventarioDatos.ListarAreaTematica();
+            return View(olista);
         }
     }
 }
