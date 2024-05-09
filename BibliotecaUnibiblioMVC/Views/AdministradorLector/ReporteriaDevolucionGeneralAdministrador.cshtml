@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<DeudorModel>
+@{
     Layout = null;
 }
 
@@ -74,11 +75,11 @@
                         </a>
                         <!-- AQUI ESTA EL DROPDOWN DE REPORTERIA (CON SUS RESPECTIVAS ACCIONES) -->
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Deudores</a></li>
+                            <li><a class="dropdown-item" asp-action="ReporteriaDevolucionGeneralAdministrador" asp-controller="AdministradorLector">Deudores</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Devolucion de ejemplar</a></li>
+                            <li><a class="dropdown-item" asp-action="ReporteriaDeudoresAdministrador" asp-controller="AdministradorLector">Usuarios Eliminados</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Reporte general</a></li>
+                            <li><a class="dropdown-item" asp-action="ReporteriaReporteGeneralAdministrador" asp-controller="AdministradorLector">Reporte general</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -101,12 +102,18 @@
 
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Primer Nombre</th>
+                            <th>Segundo Nombre</th>
+                            <th>Primer Apellido</th>
+                            <th>Segundo Apellido</th>
+                            <th>Dpi</th>
+                            <th>Telefono</th>
+                            <th>Correo Electronico</th>
+                            <th>Direccion</th>
+                            <th>Nombre Libro</th>
+                            <th>Stock Libro</th>
+                            <th>Inicio Prestamo</th>
+                            <th>Devolucion Prestamo</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -115,166 +122,24 @@
                         AQUI (dentro del tbody) VA EL FOR EACH PARA MOSTRAR LOS DATOS DE LA BASE DE DATOS
                         BORRAR TODOS LOS TR DE EJEMPLO
                         -->
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011-04-25</td>
-                            <td>$320,800</td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>2011-07-25</td>
-                            <td>$170,750</td>
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                            <td>2009-01-12</td>
-                            <td>$86,000</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>2012-03-29</td>
-                            <td>$433,060</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008-11-28</td>
-                            <td>$162,700</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>2012-12-02</td>
-                            <td>$372,000</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                            <td>2012-08-06</td>
-                            <td>$137,500</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                            <td>2010-10-14</td>
-                            <td>$327,900</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008-11-28</td>
-                            <td>$162,700</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>2012-12-02</td>
-                            <td>$372,000</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                            <td>2012-08-06</td>
-                            <td>$137,500</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                            <td>2010-10-14</td>
-                            <td>$327,900</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008-11-28</td>
-                            <td>$162,700</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>2012-12-02</td>
-                            <td>$372,000</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                            <td>2012-08-06</td>
-                            <td>$137,500</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                            <td>2010-10-14</td>
-                            <td>$327,900</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008-11-28</td>
-                            <td>$162,700</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>2012-12-02</td>
-                            <td>$372,000</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                            <td>2012-08-06</td>
-                            <td>$137,500</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                            <td>2010-10-14</td>
-                            <td>$327,900</td>
-                        </tr>
+                        @foreach (var item in Model)
+                        {   
+                           <tr>
+                                <td>@item.PrimerApellidoUsuario</td>
+                                <td>@item.SegundoNombreUsuario</td>
+                                <td>@item.PrimerApellidoUsuario</td>
+                                <td>@item.SegundoApellidoUsuario</td>
+                                <td>@item.DPIUsuario</td>
+                                <td>@item.TelefonoUsuario</td>
+                                <td>@item.CorreoElectronicoUsuario</td>
+                                <td>@item.DireccionUsuario</td>
+                                <td>@item.NombreLibro</td>
+                                <td>@item.EnStockLibro</td>
+                                <td>@item.FechaInicioPrestamo</td>
+                                <td>@item.FechaDevolucionPrestamo</td>
+                           </tr>     
+                        }
+
 
                     </tbody>
 
@@ -282,14 +147,7 @@
                        AGREGAR LOS NOMBRES DE LAS COLUMNAS DE LA BASE DE DATOS
                     -->
                     <tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
+                      
                     </tfoot>
 
                 </table>

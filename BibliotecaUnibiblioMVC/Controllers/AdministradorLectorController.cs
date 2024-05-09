@@ -9,7 +9,7 @@ namespace BibliotecaUnibiblioMVC.Controllers
         #region Vistas
         GestionInventarioDatos _GestionInventarioDatos = new GestionInventarioDatos();
         CatalogoDatos _CatalogoDatos = new CatalogoDatos();
-        private readonly CatalogoDatos _catalogoDatos;
+        
 
         public IActionResult Index()
         {
@@ -83,11 +83,6 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View(oEmpleados);
         }
 
-        public IActionResult ReporteriaReporteGeneralAdministrador()
-        {
-            return View();
-        }
-
         public IActionResult ModificarUsuariosLectoresAdministrador(int Id)
         {
             CRUDUsuarios crud = new CRUDUsuarios();
@@ -127,6 +122,25 @@ namespace BibliotecaUnibiblioMVC.Controllers
 
             return View(oRetorno);
         }
+        public IActionResult ReporteriaReporteGeneralAdministrador()
+        {
+            var olista = _GestionInventarioDatos.ReporteGeneral();
+            return View(olista);
+
+        }
+        public IActionResult ReporteriaDeudoresAdministrador()
+        {
+            var olista = _GestionInventarioDatos.UsuariosEliminados();
+            return View(olista);
+
+        }
+        public IActionResult ReporteriaDevolucionGeneralAdministrador()
+        {
+            var olista = _GestionInventarioDatos.Deudor();
+            return View(olista);
+
+        }
+
         #endregion
         #region Metodos
 

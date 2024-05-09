@@ -481,5 +481,112 @@ namespace BibliotecaUnibiblioMVC.Datos
             }
             return rpta;
         }
+
+        public List<ReporteGeneralModel> ReporteGeneral()
+        {
+
+            var oLista = new List<ReporteGeneralModel>();
+
+            var cn = new Conexion();
+
+            using (var Conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                Conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_ObtenerUsuariosConLibrosPrestados", Conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oLista.Add(new ReporteGeneralModel()
+                        {
+                            NombreUsuario = dr["NombreUsuario"].ToString(),
+                            LibroPrestado = dr["LibroPrestado"].ToString(),
+                            nombre = dr["LibroPrestado"].ToString(),
+                            FechaCreacionDetalle = dr["FechaCreacionDetalle"] as DateTime?,
+                            FechaVencimientoPrestamo = dr["FechaVencimientoPrestamo"] as DateTime?,
+                            EstadoPrestamo = Convert.ToInt32(dr["EstadoPrestamo"]),
+
+                        });
+                    }
+                }
+            }
+
+            return oLista;
+        }
+        public List<UsuariosEliminadosModel> UsuariosEliminados()
+        {
+            var usuariosEliminados = new List<UsuariosEliminadosModel>();
+            var cn = new Conexion();
+
+            using (var Conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                Conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_usuarioseliminados", Conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        var usuario = new UsuariosEliminadosModel()
+                        {
+                            PrimerNombre = dr["PrimerNombreUsuario"].ToString(),
+                            SegundoNombre = dr["SegundoNombreUsuario"].ToString(),
+                            PrimerApellido = dr["PrimerApellidoUsuario"].ToString(),
+                            SegundoApellido = dr["SegundoApellidoUsuario"].ToString(),
+                            DPI = Convert.ToInt64(dr["DPIUsuario"]),
+                            Telefono = Convert.ToInt64(dr["TelefonoUsuario"]),
+                            CorreoElectronico = dr["CorreoElectronicoUsuario"].ToString(),
+                            Direccion = dr["DireccionUsuario"].ToString()
+                        };
+
+                        usuariosEliminados.Add(usuario);
+                    }
+                }
+            }
+
+            return usuariosEliminados;
+        }
+        public List<DeudorModel> Deudor()
+        {
+            var deudores = new List<DeudorModel>();
+            var cn = new Conexion();
+
+            using (var Conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                Conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_deudores", Conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        var deudor = new DeudorModel()
+                        {
+                            PrimerNombreUsuario = dr["PrimerNombreUsuario"].ToString(),
+                            SegundoNombreUsuario = dr["SegundoNombreUsuario"].ToString(),
+                            PrimerApellidoUsuario = dr["PrimerApellidoUsuario"].ToString(),
+                            SegundoApellidoUsuario = dr["SegundoApellidoUsuario"].ToString(),
+                            DPIUsuario = Convert.ToInt64(dr["DPIUsuario"]),
+                            TelefonoUsuario = Convert.ToInt64(dr["TelefonoUsuario"]),
+                            CorreoElectronicoUsuario = dr["CorreoElectronicoUsuario"].ToString(),
+                            DireccionUsuario = dr["DireccionUsuario"].ToString(),
+                            NombreLibro = dr["NombreLibro"].ToString(),
+                            EnStockLibro = Convert.ToInt32(dr["EnStockLibro"]),
+                            FechaInicioPrestamo = dr["FechaInicioPrestamo"] as DateTime?,
+                            FechaDevolucionPrestamo = dr["FechaDevolucionPrestamo"] as DateTime?
+                        };
+
+                        deudores.Add(deudor);
+                    }
+                }
+            }
+
+            return deudores;
+        }
+
     }
 }
