@@ -29,28 +29,24 @@
             <!-- LISTA DE BOTONES ( CATALOGO, USUARIOS, GESTION DE INVENTARIO, REPORTERIA )-->
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto ">
-                    <li class="nav-item"></li>
-                        <a class="nav-link navbarHoverStyles" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Catalogo
                         </a>
+                        <!-- DROPDOWN DE USUARIOS (CON SUS RESPECTIVAS ACCIONES) -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" asp-action="Catalogo" asp-controller="Catalogo">Catalogo</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Usuarios
                         </a>
                         <!-- DROPDOWN DE USUARIOS (CON SUS RESPECTIVAS ACCIONES) -->
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Ver Usuarios Lectores</a></li>
+                            <li><a class="dropdown-item" asp-action="VerUsuariosLectoresAdministrador" asp-controller="AdministradorLector">Ver Usuarios Lectores</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar Usuarios Lectores</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Nuevo Colaborador</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Ver Colaboradores</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar Colaboradores</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Suspender usuario</a></li>
+                            <li><a class="dropdown-item" asp-action="UsuariosVerColaboradoresAdministrador" asp-controller="AdministradorLector">Ver Colaboradores</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -61,21 +57,13 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Agregar nuevos ejemplares</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar ejemplares</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar estado ejemplares</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar cantidad disponible</a></li>
-                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Agregar area tematica</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar area tematica</a></li>
+                            <li><a class="dropdown-item" asp-action="InventarioVerLibrosAdministrador" asp-controller="AdministradorLector">Ver libros</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Ver libros</a></li>
+                            <li><a class="dropdown-item" asp-action="InventarioVerGrupoLibrosAdministrador" asp-controller="AdministradorLector">Ver grupos Libros</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Ver grupos Libros</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Ver Area Tematica</a></li>
+                            <li><a class="dropdown-item" asp-action="InventarioVerAreaTematicaAdministrador" asp-controller="AdministradorLector">Ver Area Tematica</a></li>
 
                         </ul>
                     </li>
