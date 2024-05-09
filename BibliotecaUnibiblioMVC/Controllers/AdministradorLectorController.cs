@@ -119,9 +119,13 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View(olista);
         }
 
-        public IActionResult PrestamosAdministrador()
-        {
-            return View();
+        public IActionResult PrestamosAdministrador(int id)
+        {   
+            CatalogoDatos libro = new CatalogoDatos();
+
+            var oRetorno = libro.obtenerLibro(id);
+
+            return View(oRetorno);
         }
         #endregion
         #region Metodos
@@ -330,6 +334,30 @@ namespace BibliotecaUnibiblioMVC.Controllers
             {
                 return View("CreacionNuevoUsuario");
             }
+        }
+
+        [HttpPost]
+        public IActionResult CrearPrestamo(Prestamo prestamo)
+        {
+            CatalogoDatos creacionPrestamo = new CatalogoDatos();
+
+            var repuesta = creacionPrestamo.CrearPrestamo(prestamo);
+
+            if (repuesta == true)
+            {
+                TempData["MensajeAlerta"] = "El prestamo se creo correctamente.";
+                return RedirectToAction("regresarCatalogo");
+            }
+            else
+            {
+                TempData["MensajeAlerta"] = "El prestamo no fue creado";
+                return RedirectToAction("regresarCatalogo");
+            }
+        }
+
+        public IActionResult regresarCatalogo()
+        {
+            return RedirectToAction("Catalogo", "Catalogo");
         }
         #endregion
     }

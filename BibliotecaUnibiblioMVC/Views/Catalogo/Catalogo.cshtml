@@ -2,6 +2,10 @@
 @{
     Layout = null;
 }
+@if (TempData["MensajeAlerta"] != null)
+{
+    <script>alert('@TempData["MensajeAlerta"]')</script>
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,15 +52,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" asp-action="VerUsuariosLectoresAdministrador" asp-controller="AdministradorLector">Ver Usuarios Lectores</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar Usuarios Lectores</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Nuevo Colaborador</a></li>
-                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" asp-action="UsuariosVerColaboradoresAdministrador" asp-controller="AdministradorLector">Ver Colaboradores</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar Colaboradores</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Suspender usuario</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -65,17 +61,11 @@
                         </a>
                         <!-- DROPDOWN DE GESTION DE INVENTARIO (CON SUS RESPECTIVAS ACCIONES) -->
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Agregar nuevos ejemplares</a></li>
+                            <li><a class="dropdown-item" asp-action="NuevoEjemplaresAgregarAdministrador" asp-controller="AdministradorLector">Agregar nuevos ejemplares</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar ejemplares</a></li>
+                            <li><a class="dropdown-item" asp-action="NuevoAreaTematicaAdministrador" asp-controller="AdministradorLector">Agregar area tematica</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar estado ejemplares</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar cantidad disponible</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Agregar area tematica</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Modificar area tematica</a></li>
+                            <li><a class="dropdown-item" asp-action="NuevoGrupoAdministrador" asp-controller="AdministradorLector">Agregar grupo libro</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" asp-action="InventarioVerLibrosAdministrador" asp-controller="AdministradorLector">Ver libros</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -150,7 +140,7 @@
                         <div class="contenedorNiv2 ">
                             <!-- BOTON PRESTAR -->
                             <form class="btn-group">
-                                <button onclick="window.location.href = '/AdministradorLector/PrestamosAdministrador';" type="button" class="btn btn-sm btn-outline-secondary">Prestar</button>
+                                <a asp-action="PrestamosAdministrador" asp-controller="AdministradorLector" asp-route-id="@item.idLibro" class="btn btn-sm btn-outline-secondary">Prestar</a>
                             </form>
                             <small class="text-muted">Stock: @item.enStock</small>
                         </div>
