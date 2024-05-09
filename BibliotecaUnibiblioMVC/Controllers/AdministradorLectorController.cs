@@ -36,9 +36,9 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View();
         }
 
-        public IActionResult ModificarAreaTematicaAdministrador(int idGrupoLibro)
+        public IActionResult ModificarAreaTematicaAdministrador(int idArea)
         {
-            var oEmpleados = _GestionInventarioDatos.ObtenerArea(idGrupoLibro);
+            var oEmpleados = _GestionInventarioDatos.ObtenerArea(idArea);
             return View(oEmpleados);
         }
         public IActionResult InventarioVerLibrosAdministrador()
