@@ -55,9 +55,11 @@
                         </a>
                         <!-- DROPDOWN DE GESTION DE INVENTARIO (CON SUS RESPECTIVAS ACCIONES) -->
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Agregar nuevos ejemplares</a></li>
+                            <li><a class="dropdown-item" asp-action="NuevoEjemplaresAgregarAdministrador" asp-controller="AdministradorLector">Agregar nuevos ejemplares</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Agregar area tematica</a></li>
+                            <li><a class="dropdown-item" asp-action="NuevoAreaTematicaAdministrador" asp-controller="AdministradorLector">Agregar area tematica</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" asp-action="NuevoGrupoAdministrador" asp-controller="AdministradorLector">Agregar grupo libro</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" asp-action="InventarioVerLibrosAdministrador" asp-controller="AdministradorLector">Ver libros</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -88,7 +90,7 @@
         <div class="contenedorInfoStyles container-sm">
             <h1 class="py-3">Agregar Area Tematica</h1>
             <!-- INPUTS DEL FORM Y BOTON PARA ENVIAR -->
-            <form asp-action="NuevoAreaTematicaAdministrador" asp-controller="AdministradorLector" class="card p-5 contenedorFormStyles container-md">
+            <form asp-action="GuardarNuevaAreaTematica" asp-controller="AdministradorLector" method="post" class="card p-5 contenedorFormStyles container-md">
                 <div class="mb-3">
                     <label for="Nombre" class="form-label">Nombre</label>
                     <input asp-for="descripcion" type="text" class="form-control" aria-describedby="Nombre" id="btnCorreoUsuario">
@@ -98,7 +100,6 @@
                 <div class="contenedorBotones">
                     <button type="submit" class="btn btn-primary btnContenedor">Crear</button>
                 </div>
-
             </form>
         </div>
     </main>

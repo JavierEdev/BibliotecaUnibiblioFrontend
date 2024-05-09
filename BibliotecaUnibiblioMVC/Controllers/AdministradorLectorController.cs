@@ -36,9 +36,9 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View();
         }
 
-        public IActionResult ModificarAreaTematicaAdministrador(int idGrupoLibro)
+        public IActionResult ModificarAreaTematicaAdministrador(int idArea)
         {
-            var oEmpleados = _GestionInventarioDatos.ObtenerGrupo(idGrupoLibro);
+            var oEmpleados = _GestionInventarioDatos.ObtenerArea(idArea);
             return View(oEmpleados);
         }
         public IActionResult InventarioVerLibrosAdministrador()
@@ -49,7 +49,6 @@ namespace BibliotecaUnibiblioMVC.Controllers
 
         public IActionResult NuevoEjemplaresAgregarAdministrador()
         {
-            //Metodo devuelve la vista
             return View();
         }
         public IActionResult ModificarEjemplaresAdministrador(int idLibro)
@@ -80,17 +79,9 @@ namespace BibliotecaUnibiblioMVC.Controllers
         }
         public IActionResult ModificarGrupoAdministrador(int idGrupoLibro)
         {
-            //Metodo devuelve la vista
             var oEmpleados = _GestionInventarioDatos.ObtenerGrupo(idGrupoLibro);
             return View(oEmpleados);
         }
-
-        public IActionResult NuevoAreaTematicaAdministrador(int idGrupoLibro)
-        {
-            //Metodo devuelve la vista
-            var oEmpleados = _GestionInventarioDatos.ObtenerGrupo(idGrupoLibro);
-            return View(oEmpleados);
-        } 
 
         public IActionResult ReporteriaReporteGeneralAdministrador()
         {
@@ -118,7 +109,6 @@ namespace BibliotecaUnibiblioMVC.Controllers
         public IActionResult VerUsuariosLectoresAdministrador()
         {
             var olista = _CatalogoDatos.ListarUsuarios();
-
             return View(olista);
         }
 
@@ -129,9 +119,13 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View(olista);
         }
 
-        public IActionResult PrestamosAdministrador()
-        {
-            return View();
+        public IActionResult PrestamosAdministrador(int id)
+        {   
+            CatalogoDatos libro = new CatalogoDatos();
+
+            var oRetorno = libro.obtenerLibro(id);
+
+            return View(oRetorno);
         }
         #endregion
         #region Metodos
@@ -149,23 +143,6 @@ namespace BibliotecaUnibiblioMVC.Controllers
             {
                 TempData["Alerta"] = "Usuario o password incorrectos";
                 return RedirectToAction("IngresoAdministrador");
-            }
-        }
-
-        [HttpPost]
-        public IActionResult GuardarUsuario(usuarioModel oUsuario)
-        {
-            UsuarioCreacion _usuariosDatos = new UsuarioCreacion();
-
-            var repuesta = _usuariosDatos.Guardar(oUsuario);
-
-            if (repuesta == true)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View("CreacionNuevoUsuario");
             }
         }
 
@@ -209,15 +186,28 @@ namespace BibliotecaUnibiblioMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult NuevoAreaTematicaAdministrador(AreaTematicaModel oArea)
+        public IActionResult ModificarEjemplaresAdministrador(CatalogoModel oLibros)
         {
+            //Metodo devuelve la vista
             if (!ModelState.IsValid)
                 return View();
 
-            var respuesta = _GestionInventarioDatos.EditarArea(oArea);
+            var respuesta = _GestionInventarioDatos.EditarLibro(oLibros);
 
             if (respuesta)
-                return RedirectToAction("InventarioVerAreaTematicaAdministrador");
+                return RedirectToAction("InventarioVerLibrosAdministrador");
+            else
+                return View();
+        }
+        [HttpPost]
+        public IActionResult EliminarLibro(CatalogoModel oLibros)
+        {
+            //Metodo devuelve la vista
+
+            var respuesta = _GestionInventarioDatos.EliminarLibro(oLibros.idLibro);
+
+            if (respuesta)
+                return RedirectToAction("InventarioVerLibrosAdministrador");
             else
                 return View();
         }
@@ -247,75 +237,53 @@ namespace BibliotecaUnibiblioMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult NuevoEjemplaresAgregarAdministrador(CatalogoModel oEmpleados)
+        public IActionResult CRUDGrupos(GrupoLibrosModel oGrupo, int accion)
         {
-            //Metodo recibe el objeto para guardar 
-            if (!ModelState.IsValid)
-                return View();
+            bool respuesta = false;
+            bool eliminar = false;
+            switch (accion) 
+            {
+                case 1:
+                    respuesta = _GestionInventarioDatos.EditarGrupo(oGrupo);
+                break;
+                case 2:
+                    eliminar = _GestionInventarioDatos.EliminarGrupo(oGrupo.idGrupoLibro);
+                break;
+            }
 
-            var respuesta = _GestionInventarioDatos.GuardarLibro(oEmpleados);
-
-            if (respuesta)
-                return RedirectToAction("InventarioVerLibrosAdministrador");
-            else
-                return View();
-
-
-        }
-        [HttpPost]
-        public IActionResult ModificarEjemplaresAdministrador(CatalogoModel oLibros)
-        {
-            //Metodo devuelve la vista
-            if (!ModelState.IsValid)
-                return View();
-
-            var respuesta = _GestionInventarioDatos.EditarLibro(oLibros);
-
-            if (respuesta)
-                return RedirectToAction("InventarioVerLibrosAdministrador");
-            else
-                return View();
-        }
-        [HttpPost]
-        public IActionResult EliminarLibro(CatalogoModel oLibros)
-        {
-            //Metodo devuelve la vista
-
-            var respuesta = _GestionInventarioDatos.EliminarLibro(oLibros.idLibro);
-
-            if (respuesta)
-                return RedirectToAction("InventarioVerLibrosAdministrador");
-            else
-                return View();
-        }
-
-        [HttpPost]
-        public IActionResult ModificarGrupoAdministrador(GrupoLibrosModel oGrupo)
-        {
-            //Metodo devuelve la vista
-            if (!ModelState.IsValid)
-                return View();
-
-            var respuesta = _GestionInventarioDatos.EditarGrupo(oGrupo);
-
-            if (respuesta)
+            if (respuesta == true || eliminar == true)
+            {
                 return RedirectToAction("InventarioVerGrupoLibrosAdministrador");
+            }
             else
+            {
                 return View();
+            }
         }
         [HttpPost]
-        public IActionResult EliminarGrupo(GrupoLibrosModel oGrupo)
+        public IActionResult CRUDArea(AreaTematicaModel oArea, int accion)
         {
-            //Metodo devuelve la vista
+            bool respuesta = false;
+            bool eliminar = false;
+            switch (accion)
+            {
+                case 1:
+                    respuesta = _GestionInventarioDatos.EditarArea(oArea);
+                    break;
+                case 2:
+                    eliminar = _GestionInventarioDatos.EliminarArea(oArea.idArea);
+                    break;
+            }
 
-            var respuesta = _GestionInventarioDatos.EliminarGrupo(oGrupo.idGrupoLibro);
-
-            if (respuesta)
-                return RedirectToAction("InventarioVerGrupoLibrosAdministrador");
+            if (respuesta == true || eliminar == true)
+            {
+                return RedirectToAction("InventarioVerAreaTematicaAdministrador");
+            }
             else
+            {
                 return View();
+            }
         }
-
         [HttpPost]
         public IActionResult NuevoGrupoAdministrador(GrupoLibrosModel oGrupo)
         {
@@ -344,6 +312,75 @@ namespace BibliotecaUnibiblioMVC.Controllers
                 return RedirectToAction("InventarioVerAreaTematicaAdministrador");
             else
                 return RedirectToAction("NuevoAreaTematicaAdministrador");
+        }
+        [HttpPost]
+        public IActionResult NuevoAreaTematicaAdministrador(AreaTematicaModel oArea)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            var respuesta = _GestionInventarioDatos.EditarArea(oArea);
+
+            if (respuesta)
+                return RedirectToAction("InventarioVerAreaTematicaAdministrador");
+            else
+                return View();
+        }
+
+        [HttpPost]
+        public IActionResult NuevoEjemplaresAgregarAdministrador(CatalogoModel oEmpleados)
+        {
+            //Metodo recibe el objeto para guardar 
+            if (!ModelState.IsValid)
+                return View();
+
+            var respuesta = _GestionInventarioDatos.GuardarLibro(oEmpleados);
+
+            if (respuesta)
+                return RedirectToAction("InventarioVerLibrosAdministrador");
+            else
+                return View();
+        }
+
+        [HttpPost]
+        public IActionResult GuardarUsuario(usuarioModel oUsuario)
+        {
+            UsuarioCreacion _usuariosDatos = new UsuarioCreacion();
+
+            var repuesta = _usuariosDatos.Guardar(oUsuario);
+
+            if (repuesta == true)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("CreacionNuevoUsuario");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult CrearPrestamo(Prestamo prestamo)
+        {
+            CatalogoDatos creacionPrestamo = new CatalogoDatos();
+
+            var repuesta = creacionPrestamo.CrearPrestamo(prestamo);
+
+            if (repuesta == true)
+            {
+                TempData["MensajeAlerta"] = "El prestamo se creo correctamente.";
+                return RedirectToAction("regresarCatalogo");
+            }
+            else
+            {
+                TempData["MensajeAlerta"] = "El prestamo no fue creado";
+                return RedirectToAction("regresarCatalogo");
+            }
+        }
+
+        public IActionResult regresarCatalogo()
+        {
+            return RedirectToAction("Catalogo", "Catalogo");
         }
         #endregion
     }

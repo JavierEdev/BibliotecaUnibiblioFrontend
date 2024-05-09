@@ -57,9 +57,11 @@
                         </a>
                         <!-- DROPDOWN DE GESTION DE INVENTARIO (CON SUS RESPECTIVAS ACCIONES) -->
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Agregar nuevos ejemplares</a></li>
+                            <li><a class="dropdown-item" asp-action="NuevoEjemplaresAgregarAdministrador" asp-controller="AdministradorLector">Agregar nuevos ejemplares</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Agregar area tematica</a></li>
+                            <li><a class="dropdown-item" asp-action="NuevoAreaTematicaAdministrador" asp-controller="AdministradorLector">Agregar area tematica</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" asp-action="NuevoGrupoAdministrador" asp-controller="AdministradorLector">Agregar grupo libro</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" asp-action="InventarioVerLibrosAdministrador" asp-controller="AdministradorLector">Ver libros</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -118,7 +120,7 @@
                         <tr>
                             <td>@item.idGrupoLibro</td>
                             <td>@item.descripcion</td>
-                                <td><a asp-action="ModificarGrupoAdministrador" asp-controller="AdministradorLectorController" class="btn btn-primary btn-sm" asp-route-idGrupoLibro="@item.idGrupoLibro"><i class="bi bi-pen"> Editar</i></a></td>
+                                <td><a asp-action="ModificarGrupoAdministrador" asp-controller="AdministradorLector" class="btn btn-primary btn-sm" asp-route-idGrupoLibro="@item.idGrupoLibro"><i class="bi bi-pen"> Editar</i></a></td>
                         </tr>
                          }
 

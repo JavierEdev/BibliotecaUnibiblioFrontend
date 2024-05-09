@@ -88,36 +88,19 @@
         <div class="contenedorInfoStyles container-sm">
             <h1 class="py-3">Area Tematica</h1>
             <!-- INPUTS DEL FORM Y BOTON PARA ENVIAR -->
-            <form asp-action ="NuevoAreaTematicaAdministrador" asp-controller="AdministradorLector" class="card p-5 contenedorFormStyles container-md">
+            <form asp-action="CRUDArea" asp-controller="AdministradorLector" class="card p-5 contenedorFormStyles container-md">
+                <input type="hidden" id="accion" name="accion" value="" />
                 <div class="mb-3">
-                    <label for="correoUsuario" class="form-label">ID (NO MODIFICABLE)</label>
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="12345678">
+                    <input asp-for="idArea" type="hidden" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="correoUsuario" class="form-label">Ejemplo</label>
-                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
-                </div>
-                <div class="mb-3">
-                    <label for="correoUsuario" class="form-label">Ejemplo</label>
-                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
-                </div>
-                <div class="mb-3">
-                    <label for="correoUsuario" class="form-label">Ejemplo</label>
-                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
-                </div>
-                <div class="mb-3">
-                    <label for="correoUsuario" class="form-label">Ejemplo</label>
-                    <input type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
-                </div>
-
-                <div class="mb-3">
-                    <label for="fechaSalida" class="form-label">Fecha ejemplo</label>
-                    <input type="date" class="form-control" id="btnFechaSalida">
+                    <label for="correoUsuario" class="form-label">Descripcion</label>
+                    <input asp-for="descripcion" type="text" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
                 </div>
 
                 <div class="contenedorBotones">
-                    <button type="submit" class="btn btn-primary btnContenedor">Modificar</button>
-                    <button type="submit" class="btn btn-warning btnContenedor">Eliminar</button>
+                    <button type="submit" class="btn btn-primary btnContenedor" onclick="document.getElementById('accion').value = '1';">Modificar</button>
+                    <button type="submit" class="btn btn-warning btnContenedor" onclick="document.getElementById('accion').value = '2';">Eliminar</button>
                 </div>
 
             </form>

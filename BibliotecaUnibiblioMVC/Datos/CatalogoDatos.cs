@@ -143,5 +143,62 @@ namespace BibliotecaUnibiblioMVC.Datos
             return oLista;
         }
 
+
+        public Prestamo obtenerLibro(int Id)
+        {
+            var oObtener = new Prestamo();
+
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_obtenerNombreLibro", conexion);
+                cmd.Parameters.AddWithValue("id", Id);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oObtener.IdLibro = Convert.ToInt32(dr["Id"]);
+                        oObtener.NombreLibro = dr["nombreLibro"].ToString();
+                        oObtener.fechaRetorno = (DateTime)dr["fechaEntrega"];
+                    }
+                }
+            }
+            return oObtener;
+        }
+
+        public bool CrearPrestamo(Prestamo oPrestamo)
+        {
+
+            bool rpta;
+
+            try
+            {
+                var cn = new Conexion();
+
+                using (var Conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    Conexion.Open();
+                    SqlCommand cmd = new SqlCommand("sp_insertarPrestamo", Conexion);
+                    cmd.Parameters.AddWithValue("correoUsuario", oPrestamo.correoUsuario);
+                    cmd.Parameters.AddWithValue("fechaDevolucion", oPrestamo.fechaRetorno);
+                    cmd.Parameters.AddWithValue("tipoPrestamo", oPrestamo.idPrestamo);
+                    cmd.Parameters.AddWithValue("idLibro", oPrestamo.IdLibro);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                rpta = true;
+            }
+            catch (Exception ex)
+            {
+
+                string error = ex.Message;
+                rpta = false;
+            }
+            return rpta;
+        }
     }
 }
