@@ -260,7 +260,30 @@ namespace BibliotecaUnibiblioMVC.Controllers
                 return View();
             }
         }
+        [HttpPost]
+        public IActionResult CRUDArea(AreaTematicaModel oArea, int accion)
+        {
+            bool respuesta = false;
+            bool eliminar = false;
+            switch (accion)
+            {
+                case 1:
+                    respuesta = _GestionInventarioDatos.EditarArea(oArea);
+                    break;
+                case 2:
+                    eliminar = _GestionInventarioDatos.EliminarArea(oArea.idArea);
+                    break;
+            }
 
+            if (respuesta == true || eliminar == true)
+            {
+                return RedirectToAction("InventarioVerAreaTematicaAdministrador");
+            }
+            else
+            {
+                return View();
+            }
+        }
         [HttpPost]
         public IActionResult NuevoGrupoAdministrador(GrupoLibrosModel oGrupo)
         {
