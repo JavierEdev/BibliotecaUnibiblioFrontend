@@ -38,7 +38,7 @@ namespace BibliotecaUnibiblioMVC.Controllers
 
         public IActionResult ModificarAreaTematicaAdministrador(int idGrupoLibro)
         {
-            var oEmpleados = _GestionInventarioDatos.ObtenerGrupo(idGrupoLibro);
+            var oEmpleados = _GestionInventarioDatos.ObtenerArea(idGrupoLibro);
             return View(oEmpleados);
         }
         public IActionResult InventarioVerLibrosAdministrador()
@@ -49,7 +49,6 @@ namespace BibliotecaUnibiblioMVC.Controllers
 
         public IActionResult NuevoEjemplaresAgregarAdministrador()
         {
-            //Metodo devuelve la vista
             return View();
         }
         public IActionResult ModificarEjemplaresAdministrador(int idLibro)
@@ -80,17 +79,9 @@ namespace BibliotecaUnibiblioMVC.Controllers
         }
         public IActionResult ModificarGrupoAdministrador(int idGrupoLibro)
         {
-            //Metodo devuelve la vista
             var oEmpleados = _GestionInventarioDatos.ObtenerGrupo(idGrupoLibro);
             return View(oEmpleados);
         }
-
-        public IActionResult NuevoAreaTematicaAdministrador(int idGrupoLibro)
-        {
-            //Metodo devuelve la vista
-            var oEmpleados = _GestionInventarioDatos.ObtenerGrupo(idGrupoLibro);
-            return View(oEmpleados);
-        } 
 
         public IActionResult ReporteriaReporteGeneralAdministrador()
         {
@@ -118,7 +109,6 @@ namespace BibliotecaUnibiblioMVC.Controllers
         public IActionResult VerUsuariosLectoresAdministrador()
         {
             var olista = _CatalogoDatos.ListarUsuarios();
-
             return View(olista);
         }
 
@@ -149,23 +139,6 @@ namespace BibliotecaUnibiblioMVC.Controllers
             {
                 TempData["Alerta"] = "Usuario o password incorrectos";
                 return RedirectToAction("IngresoAdministrador");
-            }
-        }
-
-        [HttpPost]
-        public IActionResult GuardarUsuario(usuarioModel oUsuario)
-        {
-            UsuarioCreacion _usuariosDatos = new UsuarioCreacion();
-
-            var repuesta = _usuariosDatos.Guardar(oUsuario);
-
-            if (repuesta == true)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View("CreacionNuevoUsuario");
             }
         }
 
@@ -209,15 +182,28 @@ namespace BibliotecaUnibiblioMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult NuevoAreaTematicaAdministrador(AreaTematicaModel oArea)
+        public IActionResult ModificarEjemplaresAdministrador(CatalogoModel oLibros)
         {
+            //Metodo devuelve la vista
             if (!ModelState.IsValid)
                 return View();
 
-            var respuesta = _GestionInventarioDatos.EditarArea(oArea);
+            var respuesta = _GestionInventarioDatos.EditarLibro(oLibros);
 
             if (respuesta)
-                return RedirectToAction("InventarioVerAreaTematicaAdministrador");
+                return RedirectToAction("InventarioVerLibrosAdministrador");
+            else
+                return View();
+        }
+        [HttpPost]
+        public IActionResult EliminarLibro(CatalogoModel oLibros)
+        {
+            //Metodo devuelve la vista
+
+            var respuesta = _GestionInventarioDatos.EliminarLibro(oLibros.idLibro);
+
+            if (respuesta)
+                return RedirectToAction("InventarioVerLibrosAdministrador");
             else
                 return View();
         }
@@ -247,73 +233,28 @@ namespace BibliotecaUnibiblioMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult NuevoEjemplaresAgregarAdministrador(CatalogoModel oEmpleados)
+        public IActionResult CRUDGrupos(GrupoLibrosModel oGrupo, int accion)
         {
-            //Metodo recibe el objeto para guardar 
-            if (!ModelState.IsValid)
-                return View();
+            bool respuesta = false;
+            bool eliminar = false;
+            switch (accion) 
+            {
+                case 1:
+                    respuesta = _GestionInventarioDatos.EditarGrupo(oGrupo);
+                break;
+                case 2:
+                    eliminar = _GestionInventarioDatos.EliminarGrupo(oGrupo.idGrupoLibro);
+                break;
+            }
 
-            var respuesta = _GestionInventarioDatos.GuardarLibro(oEmpleados);
-
-            if (respuesta)
-                return RedirectToAction("InventarioVerLibrosAdministrador");
-            else
-                return View();
-
-
-        }
-        [HttpPost]
-        public IActionResult ModificarEjemplaresAdministrador(CatalogoModel oLibros)
-        {
-            //Metodo devuelve la vista
-            if (!ModelState.IsValid)
-                return View();
-
-            var respuesta = _GestionInventarioDatos.EditarLibro(oLibros);
-
-            if (respuesta)
-                return RedirectToAction("InventarioVerLibrosAdministrador");
-            else
-                return View();
-        }
-        [HttpPost]
-        public IActionResult EliminarLibro(CatalogoModel oLibros)
-        {
-            //Metodo devuelve la vista
-
-            var respuesta = _GestionInventarioDatos.EliminarLibro(oLibros.idLibro);
-
-            if (respuesta)
-                return RedirectToAction("InventarioVerLibrosAdministrador");
-            else
-                return View();
-        }
-
-        [HttpPost]
-        public IActionResult ModificarGrupoAdministrador(GrupoLibrosModel oGrupo)
-        {
-            //Metodo devuelve la vista
-            if (!ModelState.IsValid)
-                return View();
-
-            var respuesta = _GestionInventarioDatos.EditarGrupo(oGrupo);
-
-            if (respuesta)
+            if (respuesta == true || eliminar == true)
+            {
                 return RedirectToAction("InventarioVerGrupoLibrosAdministrador");
+            }
             else
+            {
                 return View();
-        }
-        [HttpPost]
-        public IActionResult EliminarGrupo(GrupoLibrosModel oGrupo)
-        {
-            //Metodo devuelve la vista
-
-            var respuesta = _GestionInventarioDatos.EliminarGrupo(oGrupo.idGrupoLibro);
-
-            if (respuesta)
-                return RedirectToAction("InventarioVerGrupoLibrosAdministrador");
-            else
-                return View();
+            }
         }
 
         [HttpPost]
@@ -344,6 +285,51 @@ namespace BibliotecaUnibiblioMVC.Controllers
                 return RedirectToAction("InventarioVerAreaTematicaAdministrador");
             else
                 return RedirectToAction("NuevoAreaTematicaAdministrador");
+        }
+        [HttpPost]
+        public IActionResult NuevoAreaTematicaAdministrador(AreaTematicaModel oArea)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            var respuesta = _GestionInventarioDatos.EditarArea(oArea);
+
+            if (respuesta)
+                return RedirectToAction("InventarioVerAreaTematicaAdministrador");
+            else
+                return View();
+        }
+
+        [HttpPost]
+        public IActionResult NuevoEjemplaresAgregarAdministrador(CatalogoModel oEmpleados)
+        {
+            //Metodo recibe el objeto para guardar 
+            if (!ModelState.IsValid)
+                return View();
+
+            var respuesta = _GestionInventarioDatos.GuardarLibro(oEmpleados);
+
+            if (respuesta)
+                return RedirectToAction("InventarioVerLibrosAdministrador");
+            else
+                return View();
+        }
+
+        [HttpPost]
+        public IActionResult GuardarUsuario(usuarioModel oUsuario)
+        {
+            UsuarioCreacion _usuariosDatos = new UsuarioCreacion();
+
+            var repuesta = _usuariosDatos.Guardar(oUsuario);
+
+            if (repuesta == true)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("CreacionNuevoUsuario");
+            }
         }
         #endregion
     }

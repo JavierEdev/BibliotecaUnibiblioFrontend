@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="~/css/navbarFooter.css">
     <link rel="stylesheet" href="~/css/layoutNuevoModificar.css">
 
-    <title>Modificar Area Tematica</title>
+    <title>Modificar Grupo Tematica</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
@@ -86,9 +86,10 @@
     </nav>
     <main id="mainContenedor ">
         <div class="contenedorInfoStyles container-sm">
-            <h1 class="py-3">Area Tematica</h1>
+            <h1 class="py-3">Grupo Libro</h1>
             <!-- INPUTS DEL FORM Y BOTON PARA ENVIAR -->
-            <form asp-action="ModificarGrupoAdministrador" asp-controller="AdministradorLector" class="card p-5 contenedorFormStyles container-md">
+            <form asp-action="CRUDGrupos" asp-controller="AdministradorLector" class="card p-5 contenedorFormStyles container-md">
+                <input type="hidden" id="accion" name="accion" value="" />
                 <div class="mb-3">
                     <input asp-for="idGrupoLibro" type="hidden" class="form-control">
                 </div>
@@ -98,9 +99,8 @@
                 </div>
 
                 <div class="contenedorBotones">
-                    <button type="submit" class="btn btn-primary btnContenedor">Modificar</button>
-                    <button type="submit" class="btn btn-warning btnContenedor">Eliminar</button>
-
+                    <button type="submit" class="btn btn-primary btnContenedor" onclick="document.getElementById('accion').value = '1';">Modificar</button>
+                    <button type="submit" class="btn btn-warning btnContenedor" onclick="document.getElementById('accion').value = '2';">Eliminar</button>
                 </div>
 
             </form>

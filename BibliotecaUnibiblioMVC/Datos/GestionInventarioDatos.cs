@@ -376,7 +376,6 @@ namespace BibliotecaUnibiblioMVC.Datos
                 {
                     Conexion.Open();
                     SqlCommand cmd = new SqlCommand("sp_InsertarAreaTematica", Conexion);
-                    cmd.Parameters.AddWithValue("idArea", oArea.idArea);
                     cmd.Parameters.AddWithValue("descripcion", oArea.descripcion);
 
                     cmd.CommandType = CommandType.StoredProcedure;
