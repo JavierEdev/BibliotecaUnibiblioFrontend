@@ -73,11 +73,11 @@
                         </a>
                         <!-- AQUI ESTA EL DROPDOWN DE REPORTERIA (CON SUS RESPECTIVAS ACCIONES) -->
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Deudores</a></li>
+                            <li><a class="dropdown-item" asp-action="ReporteriaDevolucionGeneralAdministrador" asp-controller="AdministradorLector">Deudores</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Devolucion de ejemplar</a></li>
+                            <li><a class="dropdown-item" asp-action="ReporteriaDeudoresAdministrador" asp-controller="AdministradorLector">Usuarios Eliminados</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Reporte general</a></li>
+                            <li><a class="dropdown-item" asp-action="ReporteriaReporteGeneralAdministrador" asp-controller="AdministradorLector">Reporte general</a></li>
                         </ul>
                     </li>
                 </ul>
