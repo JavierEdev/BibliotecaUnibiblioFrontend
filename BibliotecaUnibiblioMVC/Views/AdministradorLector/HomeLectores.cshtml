@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- INCLUIR ESTE LINK Y SCRIPTS PARA BOOTSTRAP -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- hojas de estilos siempre tienen que estar (reset, root y navbaar footer) y una extraque es la de la pagina como tal-->
+    <link href="~/css/HomeLectores.css" rel="stylesheet" />
+    <link href="~/css/reset.css" rel="stylesheet" />
+    <link href="~/css/root.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <header>
+    </header>
+    <main>
+        <div class="contenedorTitulo">
+            <img src="~/assets/img/UnibibloLogo.svg" class="logoStyles">
+            <h1>Biblioteca Unibiblo</h1>
+        </div>
+
+        <div id="mainContenedor" style="width: auto" class="container-xl card">
+            <div class="row align-items-center justify-content-around ">
+
+                <a class="card align-items-center btnHome" style="width: 18rem;">
+                    <img src="./assets/img/catalogo.svg" class="card-img-top imagenbtn" alt="..." style="width: 50%; height: auto;">
+                    <div class="card-body contenedorBoton">
+                        <h5 class="card-title">Catalogo</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </a>
+
+                <a class="card align-items-center btnHome" style="width: 18rem;">
+                    <img src="./assets/img/usuarios.svg" class="card-img-top imagenbtn" alt="..." style="width: 50%; height: auto;">
+                    <div class="card-body">
+                        <h5 class="card-title">Mis prestamos</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-dark p-3">
+        <div id="contenedorBotonesFooter">
+            <button class="btn btn-outline-light btn-floating botonStyles p-1 mx-1"><img class="footerImagenes" src="./assets/img/facebook.svg" alt="Facebook"></button>
+            <button class="btn btn-outline-light btn-floating botonStyles p-1 mx-1"><img class="footerImagenes" src="./assets/img/github.svg" alt="Facebook"></button>
+            <button class="btn btn-outline-light btn-floating botonStyles p-1 mx-1"><img class="footerImagenes" src="./assets/img/instagram.svg" alt="Facebook"></button>
+            <button class="btn btn-outline-light btn-floating botonStyles p-1 mx-1"><img class="footerImagenes" src="./assets/img/telegram.svg" alt="Facebook"></button>
+            <button class="btn btn-outline-light btn-floating botonStyles p-1 mx-1"><img class="footerImagenes" src="./assets/img/whatsapp.svg" alt="Facebook"></button>
+            <button class="btn btn-outline-light btn-floating botonStyles p-1 mx-1"><img class="footerImagenes" src="./assets/img/youtube.svg" alt="Facebook"></button>
+        </div>
+        <div>
+            Todos los derechos reservados &copy;
+        </div>
+    </footer>
+
+    <!-- SCRIPTS BOOTSTRAP -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
