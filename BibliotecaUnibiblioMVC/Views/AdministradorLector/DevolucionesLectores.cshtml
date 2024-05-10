@@ -1,0 +1,97 @@
+﻿@model Prestamo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- INCLUIR ESTE LINK Y SCRIPTS PARA BOOTSTRAP -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- hojas de estilos siempre tienen que estar (reset, root y navbaar footer) y una extraque es la de la pagina como tal-->
+    <link href="~/css/reset.css" rel="stylesheet" />
+    <link href="~/css/root.css" rel="stylesheet" />
+    <link href="~/css/navbarFooter.css" rel="stylesheet" />
+    <link href="~/css/PrestamosAdministrador.css" rel="stylesheet" />
+
+    <title>Devoluciones</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- IMAGEN EN LA QUE SE HACE CLICK PARA REGRESAR A HOME -->
+            <a class="navbar-brand" asp-action="HomeAdministrador" asp-controller="AdministradorLector"><img class="logoStyles logoHover" src="~/assets/img/UnibibloLogo.svg" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- LISTA DE BOTONES ( CATALOGO, USUARIOS, GESTION DE INVENTARIO, REPORTERIA )-->
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto ">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Catalogo
+                        </a>
+                        <!-- DROPDOWN DE USUARIOS (CON SUS RESPECTIVAS ACCIONES) -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" asp-action="Catalogo" asp-controller="Catalogo">Catalogo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <main id="mainContenedor">
+        <div class="my-5">
+            <h1 class="py-3">Devoluciones</h1>
+            <!-- INPUTS DEL FORM Y BOTON PARA ENVIAR -->
+            <form asp-action="CrearPrestamo" asp-controller="AdministradorLector" method="post" class="card p-5">
+                <input asp-for="IdLibro" type="text" class="form-control" id="btnEjemplarPrestado" hidden>
+                <div class="mb-3">
+                    <label for="correoUsuario" class="form-label">Correo Usuario</label>
+                    <input asp-for="correoUsuario" type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
+                </div>
+
+                <div class="mb-3">
+                    <label for="fechaEntrega" class="form-label">Fecha entrega</label>
+                    <input asp-for="fechaRetorno" type="date" class="form-control" id="btnFechaEntrega">
+                </div>
+
+                <div class="mb-3">
+                    <p>Tipo Prestamo</p>
+                    <select asp-for="idPrestamo" class="form-control">
+                        <option value="1">Préstamo normal: una semana</option>
+                        <option value="2">Préstamo nocturno</option>
+                        <option value="3">Préstamo fin de semana</option>
+                        <option value="4">Préstamo permanente: un año</option>
+                        <option value="5">Prestamo por día</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="ejemplarPrestado" class="form-label">Nombre Libro</label>
+                    <input asp-for="NombreLibro" type="text" class="form-control" id="btnEjemplarPrestado" disabled>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">He leido los terminos y condiciones</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Prestar Libro</button>
+            </form>
+        </div>
+    </main>
+    <footer class="bg-dark p-2 ">
+        <div>
+            Todos los derechos reservados &copy;
+        </div>
+    </footer>
+    <!-- SCRIPTS BOOTSTRAP -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
