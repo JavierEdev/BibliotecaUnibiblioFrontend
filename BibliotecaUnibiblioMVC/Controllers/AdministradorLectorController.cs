@@ -396,6 +396,27 @@ namespace BibliotecaUnibiblioMVC.Controllers
         {
             return RedirectToAction("Catalogo", "Catalogo");
         }
+
+        public IActionResult LectorValidacion(LoginModel oLogin)
+        {
+            Seguridad validacionPassword = new Seguridad();
+            var respuesta = validacionPassword.validarUsuario(oLogin);
+
+            if (respuesta == true)
+            {
+                return RedirectToAction("HomeLectores");
+            }
+            else
+            {
+                TempData["Alerta"] = "Usuario o password incorrectos";
+                return RedirectToAction("IngresoLector");
+            }
+        }
+
+        public IActionResult HomeLectores() {
+            return View();
+        }
+
         #endregion
     }
 }

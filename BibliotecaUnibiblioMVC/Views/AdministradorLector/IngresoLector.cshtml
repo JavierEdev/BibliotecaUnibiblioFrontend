@@ -1,6 +1,7 @@
-﻿
+﻿@model LoginModel
 @{
     Layout = null;
+    var alerta = TempData["Alerta"] as string;
 }
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
 
         <img id="imagenInicio" src="~/assets/img/UnibibloLogo.svg" alt="Unibiblo Logo">
         <h1 id="H1Style">Bibliteca Unibiblo</h1>
-        <form asp-action="HomeAdministrador" asp-controller="AdministradorLector">
+        <form asp-action="LectorValidacion" asp-controller="AdministradorLector">
         <div id="contenedorIngreso">
 
             <section>
@@ -32,15 +33,11 @@
                         <div class="form">
 
                             <div class="inputBox">
-
-                                <input type="text" required> <i>Usuario</i>
-
+                                <input asp-for="usuario" type="text" required> <i>Usuario</i>
                             </div>
 
                             <div class="inputBox">
-
-                                <input type="password" required> <i>Contraseña</i>
-
+                                 <input asp-for="password" type="password" required> <i>Contraseña</i>
                             </div>
 
 
