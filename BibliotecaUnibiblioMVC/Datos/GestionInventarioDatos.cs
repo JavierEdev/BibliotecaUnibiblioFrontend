@@ -515,6 +515,7 @@ namespace BibliotecaUnibiblioMVC.Datos
 
             return oLista;
         }
+
         public List<UsuariosEliminadosModel> UsuariosEliminados()
         {
             var usuariosEliminados = new List<UsuariosEliminadosModel>();
@@ -546,9 +547,9 @@ namespace BibliotecaUnibiblioMVC.Datos
                     }
                 }
             }
-
             return usuariosEliminados;
         }
+
         public List<DeudorModel> Deudor()
         {
             var deudores = new List<DeudorModel>();
@@ -584,7 +585,6 @@ namespace BibliotecaUnibiblioMVC.Datos
                     }
                 }
             }
-
             return deudores;
         }
 

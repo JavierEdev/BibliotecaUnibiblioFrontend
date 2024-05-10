@@ -1,4 +1,4 @@
-﻿@model List<MostrarUsuarios>
+﻿@model List<ListadoPrestamos>
 @{
     Layout = null;
 }
@@ -24,66 +24,10 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container-fluid">
             <!-- IMAGEN EN LA QUE SE HACE CLICK PARA REGRESAR A HOME -->
-            <a class="navbar-brand" asp-action="HomeAdministrador" asp-controller="AdministradorLector"><img class="logoStyles logoHover" src="~/assets/img/UnibibloLogo.svg" alt=""></a>
+            <a class="navbar-brand" asp-action="HomeLectores" asp-controller="AdministradorLector"><img class="logoStyles logoHover" src="~/assets/img/UnibibloLogo.svg" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- LISTA DE BOTONES ( CATALOGO, USUARIOS, GESTION DE INVENTARIO, REPORTERIA )-->
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto ">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Catalogo
-                        </a>
-                        <!-- DROPDOWN DE catalogo (CON SUS RESPECTIVAS ACCIONES) -->
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-action="Catalogo" asp-controller="Catalogo">Catalogo</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                           
-                        </a>
-                        <!-- DROPDOWN DE USUARIOS (CON SUS RESPECTIVAS ACCIONES) -->
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-action="VerUsuariosLectoresAdministrador" asp-controller="AdministradorLector">Ver Usuarios Lectores</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" asp-action="UsuariosVerColaboradoresAdministrador" asp-controller="AdministradorLector">Ver Colaboradores</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Gestion de inventario
-                        </a>
-                        <!-- DROPDOWN DE GESTION DE INVENTARIO (CON SUS RESPECTIVAS ACCIONES) -->
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Agregar nuevos ejemplares</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Agregar area tematica</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" asp-action="InventarioVerLibrosAdministrador" asp-controller="AdministradorLector">Ver libros</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" asp-action="InventarioVerGrupoLibrosAdministrador" asp-controller="AdministradorLector">Ver grupos Libros</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" asp-action="InventarioVerAreaTematicaAdministrador" asp-controller="AdministradorLector">Ver Area Tematica</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle navbarHoverStyles" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Reporteria
-                        </a>
-                        <!-- AQUI ESTA EL DROPDOWN DE REPORTERIA (CON SUS RESPECTIVAS ACCIONES) -->
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-action="ReporteriaDevolucionGeneralAdministrador" asp-controller="AdministradorLector">Deudores</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" asp-action="ReporteriaDeudoresAdministrador" asp-controller="AdministradorLector">Usuarios Eliminados</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" asp-action="ReporteriaReporteGeneralAdministrador" asp-controller="AdministradorLector">Reporte general</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
@@ -102,12 +46,12 @@
 
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th>DPI</th>
-                            <th>Correo Electronico</th>
-                            <th>Direccion</th>
-                            <th>Botones</th>
+                            <th>Id del libro</th>
+                            <th>Correo del solicitante</th>
+                            <th>Nombre del Libro</th>
+                            <th>Fecha de Prestamo</th>
+                            <th>Fecha de Finalizacion</th>
+                            <th>Devolver</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -119,12 +63,12 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.Id</td>
-                                <td>@item.NombreCompleto</td>
-                                <td>@item.DPI</td>
-                                <td>@item.Correo</td>
-                                <td>@item.Direccion</td>
-                                <td><a asp-action="ModificarUsuariosLectoresAdministrador" asp-controller="AdministradorLector" class="btn btn-primary btn-small" asp-route-id="@item.Id">Editar</a></td>
+                                <td>@item.idLibro</td>
+                                <td>@item.correo</td>
+                                <td>@item.nombreLibro</td>
+                                <td>@item.fechaCreacion</td>
+                                <td>@item.fechaFinalizacion</td>
+                                <td><a asp-action="DevolucionesLectores" asp-controller="AdministradorLector" asp-route-correo="@item.correo" class="btn btn-primary btn-small" asp-route-id="@item.idLibro">Editar</a></td>
                             </tr>
                         }
                     </tbody>

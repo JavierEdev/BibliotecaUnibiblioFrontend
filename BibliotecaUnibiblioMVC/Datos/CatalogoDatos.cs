@@ -113,6 +113,39 @@ namespace BibliotecaUnibiblioMVC.Datos
             return oLista;
         }
 
+        public List<ListadoPrestamos> ListarPrestamos()
+        {
+
+            //leer Tabla Libros(Select)
+
+            var oLista = new List<ListadoPrestamos>();
+
+            var cn = new Conexion();
+
+            using (var Conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                Conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_verPrestamosUsuarios", Conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oLista.Add(new ListadoPrestamos()
+                        {
+                            idLibro = Convert.ToInt32(dr["Id"]),
+                            nombreLibro = dr["Nombre"].ToString(),
+                            fechaCreacion = (DateTime)dr["fechaCreacion"],
+                            fechaFinalizacion = (DateTime)dr["fechaFinalizacion"],
+                            correo = dr["correo"].ToString(),
+                        });
+                    }
+                }
+            }
+            return oLista;
+        }
+
         public List<MostrarUsuarios> ListarColaboradores()
         {
             var oLista = new List<MostrarUsuarios>();
@@ -143,7 +176,6 @@ namespace BibliotecaUnibiblioMVC.Datos
             return oLista;
         }
 
-
         public Prestamo obtenerLibro(int Id)
         {
             var oObtener = new Prestamo();
@@ -164,6 +196,33 @@ namespace BibliotecaUnibiblioMVC.Datos
                         oObtener.IdLibro = Convert.ToInt32(dr["Id"]);
                         oObtener.NombreLibro = dr["nombreLibro"].ToString();
                         oObtener.fechaRetorno = (DateTime)dr["fechaEntrega"];
+                    }
+                }
+            }
+            return oObtener;
+        }
+
+        public Prestamo obtenerLibroDevolucion(int Id, string usuario)
+        {
+            var oObtener = new Prestamo();
+
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSQL()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_obtenerNombreLibroPrestamo", conexion);
+                cmd.Parameters.AddWithValue("id", Id);
+                cmd.Parameters.AddWithValue("usuario",usuario);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oObtener.IdLibro = Convert.ToInt32(dr["Id"]);
+                        oObtener.NombreLibro = dr["nombreLibro"].ToString();
+                        oObtener.correoUsuario = dr["correo"].ToString();
                     }
                 }
             }

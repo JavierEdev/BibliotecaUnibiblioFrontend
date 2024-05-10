@@ -22,5 +22,17 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View(librosEncontrados);
         }
 
+        public IActionResult CatalogoLector()
+        {
+            var olista = _CatalogoDatos.ListarCatalogo();
+            return View(olista);
+        }
+
+        public IActionResult CatalogoLectorBuscarLibros(string nombreLibro)
+        {
+            var librosEncontrados = _catalogoDatos.BuscarLibrosPorNombre(nombreLibro);
+            return View(librosEncontrados);
+        }
+
     }
 }

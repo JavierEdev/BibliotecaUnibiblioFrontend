@@ -9,7 +9,12 @@ namespace BibliotecaUnibiblioMVC.Controllers
         #region Vistas
         GestionInventarioDatos _GestionInventarioDatos = new GestionInventarioDatos();
         CatalogoDatos _CatalogoDatos = new CatalogoDatos();
-        
+        private LoginModel _usuarioGlobal;
+
+        public AdministradorLectorController()
+        {
+            _usuarioGlobal = new LoginModel(); // Inicializa _usuarioGlobal aquí
+        }
 
         public IActionResult Index()
         {
@@ -122,6 +127,25 @@ namespace BibliotecaUnibiblioMVC.Controllers
 
             return View(oRetorno);
         }
+
+        public IActionResult PrestamosLectores(int id)
+        {
+            CatalogoDatos libro = new CatalogoDatos();
+
+            var oRetorno = libro.obtenerLibro(id);
+
+            return View(oRetorno);
+        }
+
+        public IActionResult DevolucionesLectores(int id,string correo)
+        {
+            CatalogoDatos libro = new CatalogoDatos();
+
+            var oRetorno = libro.obtenerLibroDevolucion(id,correo);
+
+            return View(oRetorno);
+        }
+
         public IActionResult ReporteriaReporteGeneralAdministrador()
         {
             var olista = _GestionInventarioDatos.ReporteGeneral();
@@ -404,6 +428,7 @@ namespace BibliotecaUnibiblioMVC.Controllers
 
             if (respuesta == true)
             {
+                _usuarioGlobal = oLogin;
                 return RedirectToAction("HomeLectores");
             }
             else
@@ -415,6 +440,55 @@ namespace BibliotecaUnibiblioMVC.Controllers
 
         public IActionResult HomeLectores() {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult CrearPrestamoLectores(Prestamo prestamo)
+        {
+            CatalogoDatos creacionPrestamo = new CatalogoDatos();
+
+            var repuesta = creacionPrestamo.CrearPrestamo(prestamo);
+
+            if (repuesta == true)
+            {
+                TempData["MensajeAlerta"] = "El prestamo se creo correctamente.";
+                return RedirectToAction("regresarCatalogo");
+            }
+            else
+            {
+                TempData["MensajeAlerta"] = "El prestamo no fue creado";
+                return RedirectToAction("regresarCatalogo");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult CrearPrestamoLectoresUsuarios(Prestamo prestamo)
+        {
+            CatalogoDatos creacionPrestamo = new CatalogoDatos();
+
+            var repuesta = creacionPrestamo.CrearPrestamo(prestamo);
+
+            if (repuesta == true)
+            {
+                TempData["MensajeAlerta"] = "El prestamo se creo correctamente.";
+                return RedirectToAction("regresarCatalogoLector");
+            }
+            else
+            {
+                TempData["MensajeAlerta"] = "El prestamo no fue creado";
+                return RedirectToAction("regresarCatalogoLector");
+            }
+        }
+
+        public IActionResult regresarCatalogoLector()
+        {
+            return RedirectToAction("CatalogoLector", "Catalogo");
+        }
+
+        public IActionResult MisPrestamosLectores()
+        {
+            var olista = _CatalogoDatos.ListarPrestamos();
+            return View(olista);
         }
 
         #endregion

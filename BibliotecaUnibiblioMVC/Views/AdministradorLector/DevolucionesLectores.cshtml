@@ -56,22 +56,6 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="fechaEntrega" class="form-label">Fecha entrega</label>
-                    <input asp-for="fechaRetorno" type="date" class="form-control" id="btnFechaEntrega">
-                </div>
-
-                <div class="mb-3">
-                    <p>Tipo Prestamo</p>
-                    <select asp-for="idPrestamo" class="form-control">
-                        <option value="1">Préstamo normal: una semana</option>
-                        <option value="2">Préstamo nocturno</option>
-                        <option value="3">Préstamo fin de semana</option>
-                        <option value="4">Préstamo permanente: un año</option>
-                        <option value="5">Prestamo por día</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
                     <label for="ejemplarPrestado" class="form-label">Nombre Libro</label>
                     <input asp-for="NombreLibro" type="text" class="form-control" id="btnEjemplarPrestado" disabled>
                 </div>
@@ -81,7 +65,7 @@
                     <label class="form-check-label" for="exampleCheck1">He leido los terminos y condiciones</label>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Prestar Libro</button>
+                <a class="btn btn-primary">Devolver</a>
             </form>
         </div>
     </main>
