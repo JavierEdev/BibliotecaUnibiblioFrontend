@@ -35,7 +35,7 @@
                         </a>
                         <!-- DROPDOWN DE USUARIOS (CON SUS RESPECTIVAS ACCIONES) -->
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" asp-action="Catalogo" asp-controller="Catalogo">Catalogo</a></li>
+                            <li><a class="dropdown-item" asp-action="CatalogoLector" asp-controller="Catalogo">Catalogo</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -48,8 +48,9 @@
         <div class="my-5">
             <h1 class="py-3">Devoluciones</h1>
             <!-- INPUTS DEL FORM Y BOTON PARA ENVIAR -->
-            <form asp-action="CrearPrestamo" asp-controller="AdministradorLector" method="post" class="card p-5">
+            <form asp-action="CrearDevolucionUsuarios" asp-controller="AdministradorLector" method="post" class="card p-5">
                 <input asp-for="IdLibro" type="text" class="form-control" id="btnEjemplarPrestado" hidden>
+                <input asp-for="fechaRetorno" type="text" class="form-control" id="btnEjemplarPrestado" hidden>
                 <div class="mb-3">
                     <label for="correoUsuario" class="form-label">Correo Usuario</label>
                     <input asp-for="correoUsuario" type="email" class="form-control" aria-describedby="emailHelp" id="btnCorreoUsuario">
@@ -65,7 +66,7 @@
                     <label class="form-check-label" for="exampleCheck1">He leido los terminos y condiciones</label>
                 </div>
 
-                <a class="btn btn-primary">Devolver</a>
+                <button type="submit" class="btn btn-primary">Devolver</button>
             </form>
         </div>
     </main>

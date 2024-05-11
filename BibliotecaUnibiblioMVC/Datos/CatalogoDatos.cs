@@ -259,5 +259,34 @@ namespace BibliotecaUnibiblioMVC.Datos
             }
             return rpta;
         }
+
+        public bool DevolverPrestamo(Prestamo oPrestamo)
+        {
+
+            bool rpta;
+
+            try
+            {
+                var cn = new Conexion();
+
+                using (var Conexion = new SqlConnection(cn.getCadenaSQL()))
+                {
+                    Conexion.Open();
+                    SqlCommand cmd = new SqlCommand("sp_DevolverLibro", Conexion);
+                    cmd.Parameters.AddWithValue("correoUsuario", oPrestamo.correoUsuario);
+                    cmd.Parameters.AddWithValue("idLibro", oPrestamo.IdLibro);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
+                }
+                rpta = true;
+            }
+            catch (Exception ex)
+            {
+
+                string error = ex.Message;
+                rpta = false;
+            }
+            return rpta;
+        }
     }
 }

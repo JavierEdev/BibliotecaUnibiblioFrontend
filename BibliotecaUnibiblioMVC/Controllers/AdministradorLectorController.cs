@@ -491,6 +491,25 @@ namespace BibliotecaUnibiblioMVC.Controllers
             return View(olista);
         }
 
+        [HttpPost]
+        public IActionResult CrearDevolucionUsuarios(Prestamo prestamo)
+        {
+            CatalogoDatos creacionPrestamo = new CatalogoDatos();
+
+            var repuesta = creacionPrestamo.DevolverPrestamo(prestamo);
+
+            if (repuesta == true)
+            {
+                TempData["MensajeAlerta"] = "La devolcion fue exitosa";
+                return RedirectToAction("HomeLectores");
+            }
+            else
+            {
+                TempData["MensajeAlerta"] = "La devolcion fue un fracaso";
+                return RedirectToAction("regresarCatalogoLector");
+            }
+        }
+
         #endregion
     }
 }
