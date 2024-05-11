@@ -9,11 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="~/css/creacionUsuaio.css" rel="stylesheet">
+    <link href="~/css/creacionUsuarioV2.css" rel="stylesheet">
     <link href="~/css/root.css" rel="stylesheet" />
     <link href="~/css/reset.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <title>Document</title>
+    <link href="~/css/font.css" rel="stylesheet" />
+    <title>Nuevo Usuario</title>
 </head>
 
 <body id="bodyStyles">
@@ -86,7 +86,9 @@
                     <input asp-for="confirmarContrasena" type="password" name="confirmarContrasena" id="confirmarContra" style="display: inline-block;">
                     <span asp-validation-for="confirmarContrasena" class="text-danger"></span>
                 </div>
-                <button type="submit" id="btnCrearUsuario" onclick="validarContra(event)">Crear Usuario</button>
+                <div class="ContenedorBoton">
+                    <button type="submit" id="btnCrearUsuario" onclick="validarContra(event)">Crear Usuario</button>
+                </div>
             </form>
         </div>
         <script>

@@ -7,8 +7,8 @@
     width: 25vh;
     height: 25vh;
     color: var(--white);
-    border-radius: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,9);
 }
 
 #mainContenedor {
@@ -32,7 +32,7 @@
     transition: transform 0.2s ease-in, background-color 0.2s ease-in;
     border-radius: 1rem;
     padding: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 5px rgba(0,0,0,9);
 }
 
     #btnNuevoUsuario:hover {
@@ -62,7 +62,7 @@
 
 #imagenInicio {
     position: absolute;
-    width: 10rem;
+    width: 12rem;
     height: auto;
     top: 0;
 }
@@ -75,41 +75,4 @@
     font-weight: bold;
     text-align: justify;
     margin-bottom: 1.5rem;
-}
-
-/*  PEQUENO */
-@media only screen and (min-width: 1024px) {
-    #imagenInicio {
-        position: absolute;
-        width: 10rem;
-        height: auto;
-        top: 0;
-    }
-
-    #H1Style {
-        align-items: center;
-        top: 19rem;
-        color: white;
-        font-size: 2.5rem;
-        font-weight: bold;
-        text-align: justify;
-    }
-}
-
-/* MEDIANO*/
-@media only screen and (min-width: 1440px) {
-    #imagenInicio {
-        width: 15rem;
-        height: auto;
-        top: 0;
-    }
-}
-
-/* GRANDE */
-@media only screen and (min-width: 1920px) {
-    #imagenInicio {
-        width: 17rem;
-        height: auto;
-        top: 0;
-    }
 }

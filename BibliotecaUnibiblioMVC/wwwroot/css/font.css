@@ -1,0 +1,7 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+/* Aplica Roboto 500 (medium) a todas las etiquetas */
+* {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
