@@ -17,9 +17,6 @@
     <link rel="stylesheet" href="~/css/navbarFooter.css">
     <link rel="stylesheet" href="~/css/layoutVer.css">
     <link href="~/css/font.css" rel="stylesheet" />
-    <!-- CSS Tabla Extraido de : https://datatables.net -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.bootstrap5.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -33,65 +30,62 @@
         </div>
     </nav>
 
-    <div class="container" >
-        <form class="d-flex" action="@Url.Action("BuscarLibros", "Libros")" method="GET">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
+    <main class="album py-5 ">
+        <div id="contenedorCatalogo">
+            <!-- FOR EACH PARA DESPLEGAR LOS LIBROS -->
+            @foreach (var item in Model)
+            {
+                <div class="card shadow-sm contenedorIndividual">
+                    <div class="bg-dark contenedorTexto">
+                        <p class="textStyle">@item.Nombre</p>
+                        <p class="textStyle">@item.Autor</p>
+                    </div>
 
-    <div class="album py-5 bg-light">
-        <div class="container">
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                @foreach (var item in Model)
-                {
-                    <div class="card shadow-sm contenedorIndividual">
-                        <div class="bg-dark contenedorTexto">
-                            <p class="textStyle">@item.Nombre</p>
-                            <p class="textStyle">@item.Autor</p>
-                        </div>
-
-                        <div class="card-body p-2 contenedorNiv1">
-                            <div class="contenedorNiv3">
-                                <div>
-                                    <div class="contenedorNiv4">
-                                        <p class="cardTextStyle px-0">Año publicacion</p>
-                                        <div></div>
-                                        <small class="">@item.anioPublicacion</small>
-                                    </div>
-                                    <div class="contenedorNiv4">
-                                        <p class="cardTextStyle px-0">Grupo Libro</p>
-                                        <div></div>
-                                        <small class="">@item.grupoLibro</small>
-                                    </div>
-                                    <div class="contenedorNiv4">
-                                        <p class="cardTextStyle px-0">tipo Identificador</p>
-                                        <div></div>
-                                        <small class="">@item.tipoIdentificador</small>
-                                    </div>
-                                    <div class="contenedorNiv4">
-                                        <p class="cardTextStyle px-0">Estado</p>
-                                        <div></div>
-                                        <small class="">@item.estado</small>
-                                    </div>
+                    <div class="card-body p-2 contenedorNiv1">
+                        <div class="contenedorNiv3">
+                            <div>
+                                <div class="contenedorNiv4">
+                                    <p class="cardTextStyle px-0">Año publicacion</p>
+                                    <div></div>
+                                    <small class="">@item.anioPublicacion</small>
+                                </div>
+                                <div class="contenedorNiv4">
+                                    <p class="cardTextStyle px-0">Grupo Libro</p>
+                                    <div></div>
+                                    <small class="">@item.grupoLibro</small>
+                                </div>
+                                <div class="contenedorNiv4">
+                                    <p class="cardTextStyle px-0">tipo Identificador</p>
+                                    <div></div>
+                                    <small class="">@item.tipoIdentificador</small>
+                                </div>
+                                <div class="contenedorNiv4">
+                                    <p class="cardTextStyle px-0">Estado</p>
+                                    <div></div>
+                                    <small class="">@item.estado</small>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="contenedorNiv2 ">
-                                <!-- BOTON PRESTAR -->
-                                <form class="btn-group">
-                                    <a asp-action="PrestamosLectores" asp-controller="AdministradorLector" asp-route-id="@item.idLibro" class="btn btn-sm btn-outline-secondary">Prestar</a>
-                                </form>
-                                <small class="text-muted">Stock: @item.enStock</small>
-                            </div>
+                        <div class="contenedorNiv2 ">
+                            <!-- BOTON PRESTAR -->
+                            <form class="btn-group">
+                                <a asp-action="PrestamosLectores" asp-controller="AdministradorLector" asp-route-id="@item.idLibro" class="btn btn-sm btn-outline-secondary">Prestar</a>
+                            </form>
+                            <small class="text-muted">Stock: @item.enStock</small>
                         </div>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
-    </div>
 
+
+    </main>
+    <footer class="bg-dark p-2 ">
+        <div>
+            Todos los derechos reservados &copy;
+        </div>
+    </footer>
 
 
     <!-- SCRIPTS BOOTSTRAP -->
